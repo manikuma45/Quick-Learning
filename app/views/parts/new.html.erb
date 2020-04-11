@@ -1,2 +1,5 @@
-<h1>Parts#new</h1>
-<p>Find me in app/views/parts/new.html.erb</p>
+<h1>New Part</h1>
+
+<%= render 'form', part: @part %>
+
+<%= link_to 'Back', parts_path %>

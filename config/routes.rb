@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'parts/index'
-  get 'parts/new'
-  get 'parts/show'
-  get 'parts/edit'
   devise_scope :user do
     root "users/sessions#new"
   end
@@ -18,4 +14,5 @@ Rails.application.routes.draw do
   }
   resources :users, only: [:show]
   resources :admins, only: [:show]
+  resources :parts
 end

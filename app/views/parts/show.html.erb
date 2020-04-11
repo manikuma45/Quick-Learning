@@ -1,2 +1,19 @@
-<h1>Parts#show</h1>
-<p>Find me in app/views/parts/show.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @part.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @part.content %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @part.status %>
+</p>
+
+<%= link_to 'Edit', edit_part_path(@part) %> |
+<%= link_to 'Back', parts_path %>
