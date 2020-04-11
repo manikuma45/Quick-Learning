@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   resources :admins, only: [:show]
   resources :parts
   resources :subjects
+  resources :projects
 end
