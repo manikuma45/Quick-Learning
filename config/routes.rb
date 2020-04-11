@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   resources :parts
   resources :subjects
   resources :projects
+  resources :questions
 end
