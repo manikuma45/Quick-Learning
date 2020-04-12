@@ -1,5 +1,5 @@
 class AdminsController < ApplicationController
   def show
-    @admin = User.find(params[:id])
+    @admin = Admin.find(params[:id])
   end
 end

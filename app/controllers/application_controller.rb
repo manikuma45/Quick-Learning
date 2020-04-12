@@ -3,13 +3,17 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   # ログイン済ユーザーのみにアクセスを許可する
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
 
   # ログイン後、プロフィール画面に移動する
   def after_sign_in_path_for(resource)
-    user_path(id: current_user.id)
+    case resource
+    when Admin
+      admin_path(id: current_admin.id)
+    when User
+      user_path(id: current_user.id)
+    end
   end
-
   # deviseコントローラーにストロングパラメータを追加する
   before_action :configure_permitted_parameters, if: :devise_controller?
 
