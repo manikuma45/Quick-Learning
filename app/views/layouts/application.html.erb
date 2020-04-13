@@ -20,7 +20,8 @@
     <%= link_to 'Subject', subjects_path %>
     <%= link_to 'Part', parts_path %>
     <%= link_to 'Question', questions_path %>
-
+    <%= link_to "生徒を招待する", new_user_invitation_path %>
+    <%= link_to "社員を招待する", new_admin_invitation_path %>
     <%= yield %>
   </body>
 </html>
