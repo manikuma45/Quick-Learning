@@ -16,6 +16,11 @@
     <% if admin_signed_in? %>
       <p><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></p>
     <% end %>
+    <%= link_to 'Project', projects_path %>
+    <%= link_to 'Subject', subjects_path %>
+    <%= link_to 'Part', parts_path %>
+    <%= link_to 'Question', questions_path %>
+
     <%= yield %>
   </body>
 </html>
