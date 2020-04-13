@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-  devise_scope :user do
-    root "users/sessions#new"
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+
+  devise_scope :admin do
+    root "admins/sessions#new"
   end
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',
-    registrations: 'admins/registrations'
+    registrations: 'admins/registrations',
+    invitations: 'admins/invitations'
   }
   devise_for :users, controllers: {
     sessions:      'users/sessions',
