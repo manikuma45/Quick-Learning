@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   resources :admins, only: [:show]
   resources :parts
   resources :subjects
-  resources :projects
+  resources :projects do
+    get :introduction, on: :member
+  end
   resources :questions
+  resources :project_users, only: [:create, :destroy]
 end

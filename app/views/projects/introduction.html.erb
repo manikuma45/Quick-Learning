@@ -1,0 +1,4 @@
+<h1>Project Introduction</h1>
+
+<%= link_to '参加する', project_users_path(project_id: @project.id), method: :post, class: 'btn btn-primary' %>
+<%= link_to '退出する', project_user_path(id: @project.id), method: :delete, class: 'btn btn-danger' %>
