@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
   devise_scope :admin do
-    root "admins/sessions#new"
+    root "projects#index"
   end
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',

@@ -2,7 +2,11 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:introduction, :edit, :update, :destroy]
 
   def index
-    @projects = Project.all
+    if current_user&.project_user_projects&.empty? && current_user.invited_by_id.present?
+      redirect_to introduction_project_path(User.find(current_user.invited_by_id).project_user_projects.first)
+    else
+      @projects = Project.all
+    end
   end
 
   def new
@@ -36,6 +40,7 @@ class ProjectsController < ApplicationController
   end
 
   def introduction
+    @project_user = current_user.project_users.find_by(project_id: @project.id)
   end
 
 

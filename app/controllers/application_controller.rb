@@ -3,26 +3,31 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   # ログイン済ユーザーのみにアクセスを許可する
-  # before_action :authenticate_user!
+  # before_action :authenticate_admin!
 
   # ログイン後、プロフィール画面に移動する（テスト用）
-  def after_sign_in_path_for(resource)
-    case resource
-    when Admin
-      admin_path(id: current_admin.id)
-    when User
-      user_path(id: current_user.id)
-    end
-  end
-  #一時コメントアウト
   # def after_sign_in_path_for(resource)
   #   case resource
   #   when Admin
   #     admin_path(id: current_admin.id)
   #   when User
-  #     project_path(id: User.find(current_user.invited_by_id).project_id)
+  #     user_path(id: current_user.id)
   #   end
   # end
+  #一時コメントアウト
+  def after_sign_in_path_for(resource)
+    case resource
+    when Admin
+      admin_path(id: current_admin.id)
+    when User
+      if current_user.project_user_projects.empty? && current_user.invited_by_id.present?
+        binding.pry
+        project_path(id: User.find(current_user.invited_by_id).project_user_projects)
+      else
+        user_path(id: current_user.id)
+      end
+    end
+  end
   # deviseコントローラーにストロングパラメータを追加する
   before_action :configure_permitted_parameters, if: :devise_controller?
 
