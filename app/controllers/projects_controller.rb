@@ -1,9 +1,9 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:introduction, :edit, :update, :destroy]
+  before_action :set_project, only: [:edit, :update, :destroy, :project_launch]
 
   def index
-    if current_user&.project_user_projects&.empty? && current_user.invited_by_id.present?
-      redirect_to introduction_project_path(User.find(current_user.invited_by_id).project_user_projects.first)
+    if current_admin.projects.empty? && current_admin.invited_by_id.present?
+      redirect_to introduction_projects_path
     else
       @projects = Project.all
     end
@@ -17,13 +17,16 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(project_params)
-
+    @project = current_admin.projects.build(project_params)
     if @project.save
-      redirect_to projects_path, notice: "投稿しました"
+      redirect_to project_launch_project_path(@project), notice: "ローンチしました"
     else
       render 'new'
     end
+  end
+
+  def project_launch
+    @project_admin = current_admin.project_admins.find_by(project_id: @project.id)
   end
 
   def update
@@ -39,11 +42,17 @@ class ProjectsController < ApplicationController
     redirect_to projects_path, notice: '削除しました'
   end
 
+# 生徒を招待、社員が社員を招待、アプリ管理者がクライアントを招待、クライアントがプロジェクトを作成した際、それ以外の場合分け
+# current_admin.invited_by_id.present?はアプリ管理者がクライアントを招待する際に設定していないとエラーになる
   def introduction
     if current_user.present?
-      @project_user = current_user.project_users.find_by(project_id: @project.id)
+      @project_user = Admin.find(current_user.invited_by_id).project_admin_projects.first
+    elsif current_admin.present? && current_admin.invited_by_id.present? && Admin.find(current_admin.invited_by_id).project_admin_projects.present?
+      @project_admin = Admin.find(current_admin.invited_by_id).project_admin_projects.first
+    elsif current_admin.present? && current_admin.invited_by_id.present? && Admin.find(current_admin.invited_by_id).project_admin_projects.empty?
+      redirect_to new_project_path
     else
-      @project_admin = current_admin.project_admins.find_by(project_id: @project.id)
+      redirect_to new_admin_session_path
     end
   end
 

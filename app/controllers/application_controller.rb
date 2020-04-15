@@ -5,29 +5,49 @@ class ApplicationController < ActionController::Base
   # ログイン済ユーザーのみにアクセスを許可する
   # before_action :authenticate_admin!
 
-  # ログイン後、プロフィール画面に移動する（テスト用）
-  # def after_sign_in_path_for(resource)
-  #   case resource
-  #   when Admin
-  #     admin_path(id: current_admin.id)
-  #   when User
-  #     user_path(id: current_user.id)
-  #   end
-  # end
-  #一時コメントアウト
   def after_sign_in_path_for(resource)
     case resource
     when Admin
-      admin_path(id: current_admin.id)
-    when User
-      if current_user.project_user_projects.empty? && current_user.invited_by_id.present?
-        binding.pry
-        project_path(id: User.find(current_user.invited_by_id).project_user_projects)
+      if current_admin.invited_by_id.present?
+        introduction_projects_path
+      elsif current_admin.project_admin_projects.present?
+        projects_path
       else
-        user_path(id: current_user.id)
+        new_project_path
+      end
+    when User
+      if current_user.project_user_projects.empty?
+        introduction_projects_path
+      else
+        projects_path
       end
     end
   end
+
+  # ログイン後、プロジェクトの作成画面とプロジェクトの管理画面の何れかにルーティング
+  # def after_sign_in_path_for(resource)
+  #   case resource
+  #   when Admin
+  #     if current_admin.invited_by_id.present?
+  #       introduction_project_path(Admin.find(current_admin.invited_by_id).project_admin_projects.first)
+  #     elsif current_admin.project_admin_projects.present?
+  #       introduction_project_path(current_admin.project_admin_projects.first)
+  #     else
+  #       new_project_path
+  #     end
+  #   when User
+  #     if current_user.project_user_projects.empty? && current_user.invited_by_id.present?
+  #       project_path(id: User.find(current_user.invited_by_id).project_user_projects)
+  #     else
+  #       user_path(id: current_user.id)
+  #     end
+  #   end
+  # end
+# 一応コメントアウト
+  # def after_sign_in_path_for(resource)
+  #   introduction_projects_path
+  # end
+
   # deviseコントローラーにストロングパラメータを追加する
   before_action :configure_permitted_parameters, if: :devise_controller?
 
