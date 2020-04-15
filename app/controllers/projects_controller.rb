@@ -40,7 +40,11 @@ class ProjectsController < ApplicationController
   end
 
   def introduction
-    @project_user = current_user.project_users.find_by(project_id: @project.id)
+    if current_user.present?
+      @project_user = current_user.project_users.find_by(project_id: @project.id)
+    else
+      @project_admin = current_admin.project_admins.find_by(project_id: @project.id)
+    end
   end
 
 

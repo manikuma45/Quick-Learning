@@ -40,5 +40,9 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:name])
     devise_parameter_sanitizer.permit(:invite, keys: [:name])
     devise_parameter_sanitizer.permit(:accept_invitation, keys: [:name])
+    # devise_invitableを使用する際に、他のモデルからでも招待ができるようにする
+    def authenticate_inviter!
+      authenticate_admin!(force: true)
+    end
   end
 end
