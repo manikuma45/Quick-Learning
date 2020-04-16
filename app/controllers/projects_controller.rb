@@ -46,13 +46,21 @@ class ProjectsController < ApplicationController
 # current_admin.invited_by_id.present?はアプリ管理者がクライアントを招待する際に設定していないとエラーになる
   def introduction
     if current_user.present?
-      @project_user = Admin.find(current_user.invited_by_id).project_admin_projects.first
-    elsif current_admin.present? && current_admin.invited_by_id.present? && Admin.find(current_admin.invited_by_id).project_admin_projects.present?
-      @project_admin = Admin.find(current_admin.invited_by_id).project_admin_projects.first
-    elsif current_admin.present? && current_admin.invited_by_id.present? && Admin.find(current_admin.invited_by_id).project_admin_projects.empty?
+      @project_user = Admin.find(current_user.invited_by_id).project_admin_projects.last
+      return
+    end
+    if current_admin.nil?
+      redirect_to new_admin_session_path
+    elsif current_admin.invited_by_id.nil?
+      redirect_to projects_path
+    elsif current_admin.project_admin_projects.present?
+      @project_admin = current_admin.project_admin_projects.last
+    elsif Admin.find(current_admin.invited_by_id).project_admin_projects.present?
+      @project_admin = Admin.find(current_admin.invited_by_id).project_admin_projects.last
+    elsif Admin.find(current_admin.invited_by_id).project_admin_projects.empty?
       redirect_to new_project_path
     else
-      redirect_to new_admin_session_path
+      redirect_to new_user_session_path
     end
   end
 
