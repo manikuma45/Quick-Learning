@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:edit, :update, :destroy, :project_launch]
+  before_action :set_project, only: [:edit, :update, :destroy, :show, :project_launch]
 
   def index
     @projects = Project.all
@@ -10,6 +10,9 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+  end
+
+  def show
   end
 
   def create
