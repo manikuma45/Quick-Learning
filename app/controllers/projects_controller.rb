@@ -2,11 +2,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:edit, :update, :destroy, :project_launch]
 
   def index
-    if current_admin.projects.empty? && current_admin.invited_by_id.present?
-      redirect_to introduction_projects_path
-    else
-      @projects = Project.all
-    end
+    @projects = Project.all
   end
 
   def new
@@ -46,7 +42,7 @@ class ProjectsController < ApplicationController
 # current_admin.invited_by_id.present?はアプリ管理者がクライアントを招待する際に設定していないとエラーになる
   def introduction
     if current_user.present?
-      @project_user = Admin.find(current_user.invited_by_id).project_admin_projects.last
+      @project_user = current_user.project_users.find_by(project_id: Admin.find(current_user.invited_by_id).project_admin_projects.last.id)
       return
     end
     if current_admin.nil?
@@ -56,7 +52,7 @@ class ProjectsController < ApplicationController
     elsif current_admin.project_admin_projects.present?
       @project_admin = current_admin.project_admin_projects.last
     elsif Admin.find(current_admin.invited_by_id).project_admin_projects.present?
-      @project_admin = Admin.find(current_admin.invited_by_id).project_admin_projects.last
+      @project_admin = current_admin.project_admins.find_by(project_id: Admin.find(current_admin.invited_by_id).project_admin_projects.last.id)
     elsif Admin.find(current_admin.invited_by_id).project_admin_projects.empty?
       redirect_to new_project_path
     else

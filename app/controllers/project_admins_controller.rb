@@ -5,7 +5,7 @@ class ProjectAdminsController < ApplicationController
   end
 
   def destroy
-    project_admin = current_admin.project_admins.find_by(id: params[:id]).destroy
+    project_admin = current_admin.project_admins.find_by(project_id: params[:id]).destroy
     redirect_to projects_url, notice: "プロジェクトを退出しました"
   end
 end
