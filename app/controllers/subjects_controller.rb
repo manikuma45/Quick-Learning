@@ -13,7 +13,7 @@ class SubjectsController < ApplicationController
   end
 
   def create
-    @subject = Subject.new(subject_params)
+    @subject = current_admin.project_admin_projects.last.subjects.build(subject_params)
 
     if @subject.save
       redirect_to subjects_path, notice: "投稿しました"

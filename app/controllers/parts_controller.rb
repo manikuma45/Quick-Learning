@@ -42,7 +42,7 @@ class PartsController < ApplicationController
 
   def set_part
     @part = Part.find(params[:id])
-  end  
+  end
 
   def part_params
     params.require(:part).permit(:title, :content, :status)
