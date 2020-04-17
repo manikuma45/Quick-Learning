@@ -1,8 +1,8 @@
 <p>
-  <strong>Title:</strong>
-  <%= @project.title %>
+  <h2>Project Title : <%= @project.title %></h2>
 </p>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
 <%= render partial:'subjects/form', locals: { subject: @subject, project: @project } %>
+<%= render partial: 'subjects/index', locals: { subjects: @subjects, project: @project } %>

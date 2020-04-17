@@ -1,0 +1,9 @@
+<ul>
+  <% subjects.each do |subject| %>
+    <% if subject.id.present? %>
+      <li>
+        <p><%= subject.title %></p>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

@@ -12,11 +12,12 @@
   <% end %>
 
   <div class="field">
+    <h4>Add Subject</h4>
     <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit nil, class: 'btn btn-primary' %>
   </div>
 <% end %>

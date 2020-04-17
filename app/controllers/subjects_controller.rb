@@ -18,7 +18,7 @@ class SubjectsController < ApplicationController
     @subject = @project.subjects.build(subject_params)
 
     if @subject.save
-      redirect_to project_subjects_path, notice: "投稿しました"
+      redirect_to @project, notice: "投稿しました"
     else
       render 'new'
     end
