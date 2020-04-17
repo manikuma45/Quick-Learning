@@ -2,18 +2,23 @@ class PartsController < ApplicationController
   before_action :set_part, only: [:show, :edit, :update, :destroy]
 
   def index
-    @parts=Part.all
+    @project = Project.where(:id => params[:project_id]).first
+    @subject = @project.subjects.where(:id => params[:subject_id]).first
+    @parts = @subject.parts.all
   end
 
   def new
     @part=Part.new
   end
 
+# なぜここだけredirect_toの書き方を変えないと読み込まないのか？
   def create
-    @part = Part.new(part_params)
+    @project = Project.find(params[:project_id])
+    @subject = @project.subjects.find(params[:subject_id])
+    @part = @subject.parts.build(part_params)
 
     if @part.save
-      redirect_to parts_path, notice: "投稿しました"
+      redirect_to project_subject_path(id: @subject.id), notice: "投稿しました"
     else
       render 'new'
     end
@@ -41,10 +46,12 @@ class PartsController < ApplicationController
   private
 
   def set_part
-    @part = Part.find(params[:id])
+    @project = Project.find(params[:project_id])
+    @subject = Subject.find(params[:subject_id])
+    @part = @subject.parts.find(params[:id])
   end
 
   def part_params
-    params.require(:part).permit(:title, :content, :status)
+    params.require(:part).permit(:title, :content, :status, :subject_id, :project_id)
   end
 end

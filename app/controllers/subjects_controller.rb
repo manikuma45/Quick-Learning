@@ -1,5 +1,5 @@
 class SubjectsController < ApplicationController
-  before_action :set_subject, only: [:edit, :update, :destroy]
+  before_action :set_subject, only: [:show, :edit, :update, :destroy]
 
   def index
     @project = Project.where(:id => params[:project_id]).first
@@ -8,6 +8,11 @@ class SubjectsController < ApplicationController
 
   def new
     @subject = Subject.new
+  end
+
+  def show
+    @parts = @subject.parts
+    @part = @subject.parts.build
   end
 
   def edit
@@ -26,7 +31,7 @@ class SubjectsController < ApplicationController
 
   def update
     if @subject.update(subject_params)
-      redirect_to subjects_path, notice: "投稿しました"
+      redirect_to @project, notice: "投稿しました"
     else
       render 'edit'
     end
@@ -40,7 +45,8 @@ class SubjectsController < ApplicationController
 
   private
     def set_subject
-      @subject = Subject.find(params[:id])
+      @project = Project.find(params[:project_id])
+      @subject = @project.subjects.find(params[:id])
     end
 
     def subject_params

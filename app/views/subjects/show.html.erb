@@ -1,0 +1,8 @@
+<p>
+  <h2>Project Title : <%= @subject.title %></h2>
+</p>
+
+<%= link_to 'Edit', edit_project_subject_path(@subject) %> |
+<%= link_to 'Back', project_subjects_path %>
+<%= render partial:'parts/form', locals: { part: @part, subject: @subject, project: @project } %>
+<%= render partial: 'parts/index', locals: { parts: @parts, parts: @parts } %>

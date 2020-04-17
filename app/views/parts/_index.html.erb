@@ -1,0 +1,9 @@
+<ul>
+  <% parts.each do |part| %>
+    <% if part.id.present? %>
+      <li>
+        <p><%= part.title %></p>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
