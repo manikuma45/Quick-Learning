@@ -2,9 +2,7 @@ class PartsController < ApplicationController
   before_action :set_part, only: [:show, :edit, :update, :destroy]
 
   def index
-    @project = Project.where(:id => params[:project_id]).first
-    @subject = @project.subjects.where(:id => params[:subject_id]).first
-    @parts = @subject.parts.all
+    @parts = Part.all
   end
 
   def new

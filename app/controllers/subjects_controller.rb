@@ -2,7 +2,7 @@ class SubjectsController < ApplicationController
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
 
   def index
-    @project = Project.where(:id => params[:project_id]).first
+    @project = Project.find(params[:project_id])
     @subjects = @project.subjects.all
   end
 

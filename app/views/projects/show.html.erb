@@ -6,4 +6,3 @@
 <%= link_to 'Back', projects_path %>
 <%= render partial:'subjects/form', locals: { subject: @subject, project: @project } %>
 <%= render partial: 'subjects/index', locals: { subjects: @subjects, project: @project } %>
-<%= render partial: 'parts/index', locals: { parts: @parts, subjects: @subjects } %>

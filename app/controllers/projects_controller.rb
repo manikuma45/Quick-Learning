@@ -15,8 +15,6 @@ class ProjectsController < ApplicationController
   def show
     @subjects = @project.subjects
     @subject = @project.subjects.build
-    @parts = @subject.parts
-    @part = @subject.parts.build
   end
 
   def create

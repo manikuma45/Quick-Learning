@@ -2,7 +2,7 @@
   <% parts.each do |part| %>
     <% if part.id.present? %>
       <li>
-        <p><%= part.title %></p>
+        <p><%= link_to part.title, project_subject_part_path(@project, @subject, part) %></p>
       </li>
     <% end %>
   <% end %>
