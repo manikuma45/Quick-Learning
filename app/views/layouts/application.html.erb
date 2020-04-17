@@ -13,7 +13,7 @@
     <div class="header">
       <div class="header-brand">Quick Learning</div>
     </div>
-      <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+    <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
       <label for="openSidebarMenu" class="sidebarIconToggle">
         <div class="spinner diagonal part-1"></div>
         <div class="spinner horizontal"></div>
@@ -28,26 +28,24 @@
           <li><a href="https://www.youtube.com/channel/UCDfZM0IK6RBgud8HYGFXAJg" target="_blank">YouTube</a></li>
           <li><a href="https://www.linkedin.com/in/plavookac/" target="_blank">Linkedin</a></li>
         </ul>
-      </div>
-      <div class='container'>
-
-    <% if user_signed_in? %>
-      <p><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
-    <% else %>
-      <p><%= link_to "ユーザーログイン", new_user_session_path %></p>
-    <% end %>
-    <% if admin_signed_in? %>
-      <p><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></p>
-    <% else %>
-      <p><%= link_to "管理者ログイン", new_admin_session_path %></p>
-    <% end %>
-    <%= link_to 'Project', projects_path %>
-    <%= link_to 'Subject', subjects_path %>
-    <%= link_to 'Part', parts_path %>
-    <%= link_to 'Question', questions_path %>
-    <%= link_to "生徒を招待する", new_user_invitation_path %>
-    <%= link_to "社員を招待する", new_admin_invitation_path %>
-    <%= yield %>
     </div>
+      <div class='container'>
+        <% if user_signed_in? %>
+          <p><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
+        <% else %>
+          <p><%= link_to "ユーザーログイン", new_user_session_path %></p>
+        <% end %>
+        <% if admin_signed_in? %>
+          <p><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></p>
+        <% else %>
+          <p><%= link_to "管理者ログイン", new_admin_session_path %></p>
+        <% end %>
+        <%= link_to 'Project', projects_path %>
+        <%= link_to 'New Project', new_project_path %>
+
+        <%= link_to "生徒を招待する", new_user_invitation_path %>
+        <%= link_to "社員を招待する", new_admin_invitation_path %>
+        <%= yield %>
+      </div>
   </body>
 </html>

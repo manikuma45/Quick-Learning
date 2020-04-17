@@ -13,6 +13,8 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @subjects = @project.subjects
+    @subject = @project.subjects.build
   end
 
   def create

@@ -2,7 +2,8 @@ class SubjectsController < ApplicationController
   before_action :set_subject, only: [:edit, :update, :destroy]
 
   def index
-    @subjects = Subject.all
+    @project = Project.where(:id => params[:project_id]).first
+    @subjects = @project.subjects.all
   end
 
   def new
@@ -13,10 +14,11 @@ class SubjectsController < ApplicationController
   end
 
   def create
-    @subject = current_admin.project_admin_projects.last.subjects.build(subject_params)
+    @project = Project.find(params[:project_id])
+    @subject = @project.subjects.build(subject_params)
 
     if @subject.save
-      redirect_to subjects_path, notice: "投稿しました"
+      redirect_to project_subjects_path, notice: "投稿しました"
     else
       render 'new'
     end
@@ -32,7 +34,7 @@ class SubjectsController < ApplicationController
 
   def destroy
     @subject.destroy
-    redirect_to subjects_path, notice: '削除しました'
+    redirect_to project_subjects_path, notice: '削除しました'
   end
 
 
@@ -42,6 +44,6 @@ class SubjectsController < ApplicationController
     end
 
     def subject_params
-      params.require(:subject).permit(:title)
+      params.require(:subject).permit(:project_id, :title)
     end
 end

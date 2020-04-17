@@ -12,13 +12,11 @@
     <% @subjects.each do |subject| %>
       <tr>
         <td><%= subject.title %></td>
-        <td><%= link_to 'Edit', edit_subject_path(subject) %></td>
-        <td><%= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_project_subject_path(@project, subject) %></td>
+        <td><%= link_to 'Destroy', project_subject_path(@project, subject), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Subject', new_subject_path %>
