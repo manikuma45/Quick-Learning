@@ -1,6 +1,11 @@
-<h1>Project Launch</h1>
+<br>
+<br>
+<div class="jumbotron jumbotron-extend">
+</div>
+<div class="container">
 <% if @project_admin.present? %>
-  <%= link_to '退出する', project_admin_path(id: @project_admin.id), method: :delete, class: 'btn btn-danger' %>
+  <%= link_to '退出する', project_admin_path(id: @project_admin.id), methodNEXT>>elete, class: 'btn btn-info mr-auto' %>
 <% else %>
-  <%= link_to '参加する', project_admins_path(project_id: @project.id), method: :post, class: 'btn btn-primary' %>
+  <%= link_to 'カリキュラムの作成を始めましょう', project_admins_path(project_id: @project.id), method: :post, class: 'btn btn-info btn-block btn-lg' %>
 <% end %>
+</div>

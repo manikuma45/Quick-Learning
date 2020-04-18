@@ -7,7 +7,7 @@ body {
     background: #fff;
     padding: 0;
     margin: 0;
-    font-family: 'Varela Round', sans-serif;
+    font-family: fontawesome;
 }
 .header {
     display: table;
@@ -15,7 +15,7 @@ body {
     width: 100%;
     max-width: 100%;
     box-shadow: none;
-    background-color: #FC466B;
+    background-color: #330066;
     position: fixed;
     height: 60px!important;
     overflow: hidden;
@@ -28,6 +28,12 @@ body {
   font-weight: bold;
   vertical-align: middle;
   font-size: 2em;
+}
+.header-menu {
+  display:table-cell;
+  text-align: right;
+  color: #fff;
+  vertical-align: middle;
 }
 .main {
     margin: 0 auto;
@@ -43,7 +49,7 @@ body {
     margin-top: 60px;
     transform: translateX(-250px);
     transition: transform 250ms ease-in-out;
-    background: linear-gradient(180deg, #FC466B 0%, #3F5EFB 100%);
+    background: linear-gradient(180deg, #330066 0%, #FC466B 100%);
 }
 .sidebarMenuInner{
     margin:0;
@@ -137,4 +143,11 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
     box-sizing: border-box;
     transform: rotate(-135deg);
     margin-top: -9px;
+}
+.icon::before {
+  display: inline-block;
+  margin-right: .5em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #fff;
 }

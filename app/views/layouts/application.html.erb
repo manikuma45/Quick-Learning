@@ -7,11 +7,25 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- Font Awesomeの読み込み -->
+    <script src="https://kit.fontawesome.com/35325323f0.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.3.0/font-awesome-animation.min.css">
   </head>
 
   <body>
     <div class="header">
       <div class="header-brand">Quick Learning</div>
+      <div class="header-menu">
+        <% if user_signed_in? %>
+          <a class="icon fas fa-sign-out-alt faa-horizontal animated-hover fa-2x" href="/users/sign_out" data-method="delete" ></a>
+        <% elsif admin_signed_in? %>
+          <a class="icon fas fa-sign-out-alt faa-horizontal animated-hover fa-2x" href="/admins/sign_out" data-method="delete" ></a>
+        <% else %>
+          <a class="icon fas fa-sign-in-alt faa-horizontal animated-hover fa-2x" href="/users/sign_in"></a>
+          <a class="icon fas fa-sign-in-alt faa-horizontal animated-hover fa-2x" href="/admins/sign_in"></a>
+        <% end %>
+        <a class="icon fas fa-user-plus faa-horizontal animated-hover fa-2x" href="/admins/sign_up"></a>
+      </div>
     </div>
     <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
       <label for="openSidebarMenu" class="sidebarIconToggle">
@@ -29,22 +43,23 @@
           <li><a href="https://www.linkedin.com/in/plavookac/" target="_blank">Linkedin</a></li>
         </ul>
     </div>
-      <div class='container'>
-        <% if user_signed_in? %>
-          <p><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
-        <% else %>
-          <p><%= link_to "ユーザーログイン", new_user_session_path %></p>
-        <% end %>
-        <% if admin_signed_in? %>
-          <p><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></p>
-        <% else %>
-          <p><%= link_to "管理者ログイン", new_admin_session_path %></p>
-        <% end %>
+    <div class="header-nav">
+      <% if admin_signed_in? && current_admin.project_admin_projects.present? %>
+        <h5><%= link_to current_admin.name, current_admin %>/<%= link_to 'Project', project_path(current_admin.project_admin_projects.last) %></h5>
+      <% end %>
+      <% if user_signed_in? %>
+        <h2><%= link_to 'Project', projects_path %></h2>/
+        <h2><%= link_to 'my name', user(current_user) %></h2>
+      <% end %>
+    </div>
+    <% if admin_signed_in? && current_admin.project_admin_projects.present? %>
         <%= link_to 'Project', projects_path %>
         <%= link_to 'New Project', new_project_path %>
 
         <%= link_to "生徒を招待する", new_user_invitation_path %>
         <%= link_to "社員を招待する", new_admin_invitation_path %>
+    <% end %>
+    <div class="container-fluid">
         <%= yield %>
       </div>
   </body>

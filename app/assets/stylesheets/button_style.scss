@@ -1,0 +1,28 @@
+.btn-purple,
+.btn-purple.disabled, .btn-purple:disabled {
+  color: #fff;
+  background-color: #330066;
+  border-color: #330066;
+}
+
+/* focusされた時の枠線の色 */
+.btn-purple:focus, .btn-purple.focus,
+.btn-purple:not(:disabled):not(.disabled):active:focus, .btn-purple:not(:disabled):not(.disabled).active:focus,
+.show > .btn-purple.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
+/* hover時（マウスカーソルを重ねた時）の色（通常より濃いor暗めの色を指定）*/
+.btn-purple:hover {
+  color: #fff;
+  background-color: #330033	;
+  border-color: #330033	;
+}
+
+/* active時の色（hover時と同等かさらに濃いor暗めの色を指定） */
+.btn-purple:not(:disabled):not(.disabled):active, .btn-purple:not(:disabled):not(.disabled).active,
+.show > .btn-purple.dropdown-toggle {
+  color: #fff;
+  background-color: #660066;
+  border-color: #660066;
+}
