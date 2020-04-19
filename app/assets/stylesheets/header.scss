@@ -7,6 +7,7 @@ body {
     background: #fff;
     padding: 0;
     margin: 0;
+    color: #888888;
     font-family: fontawesome;
 }
 .header {
@@ -15,7 +16,8 @@ body {
     width: 100%;
     max-width: 100%;
     box-shadow: none;
-    background-color: #330066;
+    background-color: #333333;
+    opacity: 0.9;
     position: fixed;
     height: 60px!important;
     overflow: hidden;
@@ -27,13 +29,24 @@ body {
   color: #fff;
   font-weight: bold;
   vertical-align: middle;
-  font-size: 2em;
+  font-size: 1em;
 }
-.header-menu {
+.icon::before {
+  display: inline-block;
+  margin-right: 0.5em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #fff;
+}
+.header-icon {
   display:table-cell;
   text-align: right;
   color: #fff;
   vertical-align: middle;
+}
+.header-nav {
+  margin-top: 60px;
+  margin-left: 20px;
 }
 .main {
     margin: 0 auto;
@@ -42,6 +55,7 @@ body {
     margin-top: 60px;
 }
 #sidebarMenu {
+    z-index: 10;
     height: 100%;
     position: fixed;
     left: 0;
@@ -49,7 +63,7 @@ body {
     margin-top: 60px;
     transform: translateX(-250px);
     transition: transform 250ms ease-in-out;
-    background: linear-gradient(180deg, #330066 0%, #FC466B 100%);
+    background: linear-gradient(180deg, #333333 0%, #fff 100%);
 }
 .sidebarMenuInner{
     margin:0;
@@ -143,11 +157,4 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
     box-sizing: border-box;
     transform: rotate(-135deg);
     margin-top: -9px;
-}
-.icon::before {
-  display: inline-block;
-  margin-right: .5em;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #fff;
 }

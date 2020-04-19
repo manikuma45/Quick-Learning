@@ -12,3 +12,5 @@
     <%= link_to '参加する', project_admins_path(project_id: Admin.find(current_admin.invited_by_id).project_admin_projects.last.id), method: :post, class: 'btn btn-primary' %>
   <% end %>
 <% end %>
+
+<%= stylesheet_link_tag "projects/introduction", :media => "all" %>

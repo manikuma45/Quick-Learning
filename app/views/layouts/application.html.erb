@@ -7,26 +7,26 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <!-- Font Awesomeの読み込み -->
+    <!-- Font Awesomeの導入 -->
     <script src="https://kit.fontawesome.com/35325323f0.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.3.0/font-awesome-animation.min.css">
+    <!-- Animate.cssの導入 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
   </head>
 
   <body>
-    <% if (admin_signed_in? || user_signed_in?) && (current_admin.project_admin_projects.present? || current_admin.project_user_projects.present?) %>
+    <% if admin_signed_in? && current_admin.project_admin_projects.present? || user_signed_in? && current_user.project_user_projects.present? %>
     <div class="header">
       <div class="header-brand">Quick Learning</div>
-      <div class="header-menu">
+      <div class="header-icon">
         <% if user_signed_in? %>
           <a class="icon fas fa-sign-out-alt faa-horizontal animated-hover fa-2x" href="/users/sign_out" data-method="delete" ></a>
-        <% elsif admin_signed_in? %>
-          <a class="icon fas fa-sign-out-alt faa-horizontal animated-hover fa-2x" href="/admins/sign_out" data-method="delete" ></a>
-        <% else %>
-          <a class="icon fas fa-sign-in-alt faa-horizontal animated-hover fa-2x" href="/users/sign_in"></a>
-          <a class="icon fas fa-sign-in-alt faa-horizontal animated-hover fa-2x" href="/admins/sign_in"></a>
         <% end %>
-        <a class="icon fas fa-user-plus faa-horizontal animated-hover fa-2x" href="/admins/sign_up"></a>
+        <% if admin_signed_in? %>
+          <a class="icon fas fa-user-tie faa-horizontal animated-hover fa-2x" href="/admins/invitation/new" ></a>
+          <a class="icon fas fa-user-graduate faa-horizontal animated-hover fa-2x" href="/users/invitation/new" ></a>
+          <a class="icon fas fa-sign-out-alt faa-horizontal animated-hover fa-2x" href="/admins/sign_out" data-method="delete" ></a>
+        <% end %>
       </div>
     </div>
     <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
@@ -47,19 +47,20 @@
     </div>
     <% end %>
     <% if admin_signed_in? && current_admin.project_admin_projects.present? %>
-      <h5><%= link_to current_admin.name, current_admin %>/<%= link_to 'Project', project_path(current_admin.project_admin_projects.last) %></h5>
+    <div class="navigation-title">
+      <h3><%= link_to current_admin.name, current_admin %>/<%= link_to 'Project', project_path(current_admin.project_admin_projects.last) %></h3>
+    </div>
     <% end %>
-    <% if user_signed_in? %>
-      <h2><%= link_to 'Project', projects_path %></h2>/
-      <h2><%= link_to 'my name', user(current_user) %></h2>
-    <% end %>
-    <% if admin_signed_in? && current_admin.project_admin_projects.present? %>
-        <%= link_to 'Project', projects_path %>
-        <%= link_to 'New Project', new_project_path %>
-
-        <%= link_to "生徒を招待する", new_user_invitation_path %>
-        <%= link_to "社員を招待する", new_admin_invitation_path %>
-    <% end %>
+    <div class="navigation mt-3">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col"><%= link_to "Project Index", projects_path, class: "nav-link" %></div>
+          <div class="col"><%= link_to "Make Project", new_project_path, class: "nav-link" %></div>
+          <div class="col"><%= link_to "Settiong", current_admin, class: "nav-link" %></div>
+          <div class="col"><%= link_to "Question Index", projects_path, class: "nav-link" %></div>
+        </div>
+      </div>
+    </div>
         <%= yield %>
   </body>
 </html>

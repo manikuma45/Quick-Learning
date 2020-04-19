@@ -26,3 +26,10 @@
   background-color: #660066;
   border-color: #660066;
 }
+
+a:not(.btn), a:link:not(.btn) {
+  color: #444444;
+}
+a:visited:not(.btn) {
+  color: #888888;
+}
