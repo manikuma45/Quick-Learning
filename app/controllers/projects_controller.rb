@@ -20,7 +20,7 @@ class ProjectsController < ApplicationController
   def create
     @project = current_admin.projects.build(project_params)
     if @project.save
-      redirect_to project_launch_project_path(@project), notice: "ローンチしました"
+      redirect_to project_launch_project_path(@project), notice: "プロジェクトを作成しました！カリキュラムの作成に取り掛かりましょう！"
     else
       render 'new'
     end

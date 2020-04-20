@@ -15,6 +15,19 @@
   </head>
 
   <body>
+    <% if notice %>
+      <div class="alert alert-info alert-dismissible animated heartBeat" role="alert">
+        <%= notice %>
+      </div>
+    <% end %>
+    <% if alert %>
+      <div class="alert alert-danger alert-dismissible animated heartBeat" role="alert">
+        <%= alert %>
+      </div>
+    <% end %>
+    <div class="wrap">
+    <div class="notifications">
+    </div>
     <% if admin_signed_in? && current_admin.project_admin_projects.present? || user_signed_in? && current_user.project_user_projects.present? %>
     <div class="header">
       <div class="header-brand">Quick Learning</div>
@@ -28,7 +41,6 @@
           <a class="icon fas fa-sign-out-alt faa-horizontal animated-hover fa-2x" href="/admins/sign_out" data-method="delete" ></a>
         <% end %>
       </div>
-    </div>
     <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
       <label for="openSidebarMenu" class="sidebarIconToggle">
         <div class="spinner diagonal part-1"></div>
@@ -44,23 +56,25 @@
           <li><a href="https://www.youtube.com/channel/UCDfZM0IK6RBgud8HYGFXAJg" target="_blank">YouTube</a></li>
           <li><a href="https://www.linkedin.com/in/plavookac/" target="_blank">Linkedin</a></li>
         </ul>
+      </div>
     </div>
     <% end %>
     <% if admin_signed_in? && current_admin.project_admin_projects.present? %>
-    <div class="navigation-title">
-      <h3><%= link_to current_admin.name, current_admin %>/<%= link_to 'Project', project_path(current_admin.project_admin_projects.last) %></h3>
-    </div>
-    <% end %>
-    <div class="navigation mt-3">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col"><%= link_to "Project Index", projects_path, class: "nav-link" %></div>
-          <div class="col"><%= link_to "Make Project", new_project_path, class: "nav-link" %></div>
-          <div class="col"><%= link_to "Settiong", current_admin, class: "nav-link" %></div>
-          <div class="col"><%= link_to "Question Index", projects_path, class: "nav-link" %></div>
+      <div class="navigation-title">
+        <h3><%= link_to current_admin.name, current_admin %>/<%= link_to 'Project', project_path(current_admin.project_admin_projects.last) %></h3>
+      </div>
+      <div class="navigation mt-3">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col"><%= link_to "Project Index", projects_path, class: "nav-link" %></div>
+            <div class="col"><%= link_to "Make Project", new_project_path, class: "nav-link" %></div>
+            <div class="col"><%= link_to "Settiong", current_admin, class: "nav-link" %></div>
+            <div class="col"><%= link_to "Question Index", projects_path, class: "nav-link" %></div>
+          </div>
         </div>
       </div>
+    <% end %>
+    <%= yield %>
     </div>
-        <%= yield %>
   </body>
 </html>

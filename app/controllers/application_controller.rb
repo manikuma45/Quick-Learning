@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   # CSRF対策
   protect_from_forgery with: :exception
-
+  # flashメッセージの
+  add_flash_types :success, :info, :warning, :danger
   # ログイン済ユーザーのみにアクセスを許可する
   # before_action :authenticate_admin!
 
@@ -14,7 +15,7 @@ class ApplicationController < ActionController::Base
       elsif current_admin.project_admin_projects.present?
         projects_path
       else
-        new_project_path
+        new_project_path(notice: "プロジェクトを作成しましょう！")
       end
     when User
       if current_user.project_user_projects.empty?
