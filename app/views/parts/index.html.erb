@@ -1,7 +1,7 @@
 <h1>Parts</h1>
 
-<table>
-  <thead>
+<table class="table table-hover">
+  <thead class="thead-light">
     <tr>
       <th>Title</th>
       <th>Content</th>
@@ -12,6 +12,7 @@
 
   <tbody>
     <% @parts.each do |part| %>
+    <% if part.id.present? %>
       <tr>
         <td><%= part.title %></td>
         <td><%= part.content %></td>

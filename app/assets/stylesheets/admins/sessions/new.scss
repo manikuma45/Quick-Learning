@@ -1,3 +1,8 @@
+// 画面サイズ固定
+html body {
+	height: 100vh;
+	overflow-x: hidden;
+}
 .wrap {
 	display: flex;
 	align-items: center;
