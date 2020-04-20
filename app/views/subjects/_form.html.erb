@@ -11,13 +11,8 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <h4>Add Subject</h4>
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit nil, class: 'btn btn-primary' %>
+  <div class="form-group row">
+    <%= form.text_field :title, placeholder: "新しいタイトル", class: "form-control, col-sm-6 ml-2" %>
+    <%= form.submit nil, class: 'btn-info btn-sm col-sm-2 ml-2' %>
   </div>
 <% end %>

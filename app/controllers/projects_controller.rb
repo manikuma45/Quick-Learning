@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = current_admin.projects
+    @project = Project.new
   end
 
   def new
@@ -20,9 +21,13 @@ class ProjectsController < ApplicationController
   def create
     @project = current_admin.projects.build(project_params)
     if @project.save
-      redirect_to project_launch_project_path(@project), notice: "プロジェクトを作成しました！カリキュラムの作成に取り掛かりましょう！"
+      if current_admin.projects.count() > 1
+        redirect_back(fallback_location: root_path)
+      else
+        redirect_to project_launch_project_path(@project), notice: "プロジェクトを作成しました！カリキュラムの作成に取り掛かりましょう！"
+      end
     else
-      render 'new'
+      render 'new', notice: "プロジェクトを作成できませんでした。"
     end
   end
 
@@ -32,7 +37,7 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update(project_params)
-      redirect_to projects_path, notice: "投稿しました"
+      redirect_to projects_path, notice: "プロジェクト名を更新しました"
     else
       render 'edit'
     end
@@ -40,7 +45,7 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project.destroy
-    redirect_to projects_path, notice: '削除しました'
+    redirect_to projects_path, notice: 'プロジェクトを削除しました'
   end
 
 # 生徒を招待、社員が社員を招待、アプリ管理者がクライアントを招待、クライアントがプロジェクトを作成した際、それ以外の場合分け

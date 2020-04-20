@@ -23,7 +23,7 @@ class SubjectsController < ApplicationController
     @subject = @project.subjects.build(subject_params)
 
     if @subject.save
-      redirect_to @project, notice: "投稿しました"
+      redirect_back(fallback_location: root_path)
     else
       render 'new'
     end
@@ -39,7 +39,7 @@ class SubjectsController < ApplicationController
 
   def destroy
     @subject.destroy
-    redirect_to project_subjects_path, notice: '削除しました'
+    redirect_back(fallback_location: root_path)
   end
 
 
