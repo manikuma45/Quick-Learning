@@ -2,7 +2,7 @@ class PartsController < ApplicationController
   before_action :set_part, only: [:show, :edit, :update, :destroy]
 
   def index
-    @parts = Part.all
+    @parts = Part.all.order(created_at: :desc)
   end
 
   def new
@@ -11,16 +11,20 @@ class PartsController < ApplicationController
     @part=Part.new
   end
 
-# なぜここだけredirect_toの書き方を変えないと読み込まないのか？
+  # なぜここだけredirect_toの書き方を変えないと読み込まないのか？
   def create
     @project = Project.find(params[:project_id])
     @subject = @project.subjects.find(params[:subject_id])
     @part = @subject.parts.build(part_params)
 
-    if @part.save
-      redirect_to project_subject_path(id: @subject.id), notice: "投稿しました"
-    else
-      render 'new'
+    respond_to do |format|
+      if @part.save
+        format.html { redirect_to project_subject_path(id: @subject.id), notice: "投稿しました" }
+        format.json { render :show, status: :created, location: @part }
+      else
+        format.html { render :new }
+        format.json { render json: @part.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -31,10 +35,14 @@ class PartsController < ApplicationController
   end
 
   def update
-    if @part.update(part_params)
-      redirect_to parts_path, notice: "投稿しました"
-    else
-      render 'edit'
+    respond_to do |format|
+      if @part.update(part_params)
+        format.html { redirect_to project_subject_part_path(@part), notice: '投稿しました' }
+        format.json { render :show, status: :ok, location: @part }
+      else
+        format.html { render :edit }
+        format.json { render json: @part.errors, status: :unprocessable_entity }
+      end
     end
   end
 

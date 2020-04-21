@@ -1,6 +1,5 @@
 <h1>Editing Part</h1>
 
-<%= render 'form', part: @part %>
+<%= render partial:'form', locals: { subject: @subject, project: @project, part: @part } %>
 
-<%= link_to 'Show', @part %> |
-<%= link_to 'Back', parts_path %>
+<%= link_to 'Show', project_subject_part_path(@part) %> |

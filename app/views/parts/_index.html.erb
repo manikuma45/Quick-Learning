@@ -12,7 +12,7 @@
     <% if part.id.present? %>
       <tr>
         <td><%= link_to part.title, project_subject_part_path(@project, @subject, part) %></td>
-        <td><%= part.content %></td>
+        <td><%= part.content.html_safe %></td>
       </tr>
     <% end %>
     <% end %>

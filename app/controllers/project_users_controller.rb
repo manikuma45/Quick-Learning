@@ -1,7 +1,7 @@
 class ProjectUsersController < ApplicationController
   def create
     project_user = current_user.project_users.create(project_id: params[:project_id])
-    redirect_to current_user.project_user_projects.last, notice: "プロジェクトに参加しました！"
+    redirect_to current_user, notice: "プロジェクトに参加しました！"
   end
 
   def destroy

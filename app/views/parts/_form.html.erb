@@ -1,27 +1,42 @@
 <%= form_with(model: [project, subject, part], local: true) do |form| %>
-  <% if part.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(part.errors.count, "error") %> prohibited this part from being saved:</h2>
+<% if part.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(part.errors.count, "error") %> prohibited this @part from being saved:</h2>
 
-      <ul>
-      <% part.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit nil, class: 'btn btn-primary' %>
-  </div>
+  <ul>
+    <% part.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
 <% end %>
+
+<div class="form-group">
+  <%= form.text_field :title, placeholder: "title", class: "form-control" %>
+</div>
+
+<div class="field">
+  <%= form.label :content %>
+  <%= form.text_area :content, 'data-provider': :summernote %>
+</div>
+
+<div class="actions">
+  <%= form.submit "保存", class: 'btn btn-info btn-block btn-lg' %>
+</div>
+<% end %>
+
+<div id="summernote"></div>
+</div>
+
+<script>
+$(function () {
+  $('[data-provider="summernote"]').each(function(){
+    $(this).summernote({
+      lang: 'ja-JP',
+      height: 500,
+      fontNames: ['Helvetica', 'sans-serif', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New'],
+      fontNamesIgnoreCheck: ['Helvetica', 'sans-serif', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New'],
+    });
+  })
+})
+</script>

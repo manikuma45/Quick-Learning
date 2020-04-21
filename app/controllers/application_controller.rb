@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
       if current_user.project_user_projects.empty?
         introduction_projects_path
       else
-        projects_path
+        current_user
       end
     end
   end
