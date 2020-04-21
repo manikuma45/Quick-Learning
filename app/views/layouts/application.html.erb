@@ -49,12 +49,9 @@
       </label>
       <div id="sidebarMenu">
         <ul class="sidebarMenuInner">
-          <li>Jelena Jovanovic <span>Web Developer</span></li>
-          <li><a href="https://vanila.io" target="_blank">Company</a></li>
-          <li><a href="https://instagram.com/plavookac" target="_blank">Instagram</a></li>
-          <li><a href="https://twitter.com/plavookac" target="_blank">Twitter</a></li>
-          <li><a href="https://www.youtube.com/channel/UCDfZM0IK6RBgud8HYGFXAJg" target="_blank">YouTube</a></li>
-          <li><a href="https://www.linkedin.com/in/plavookac/" target="_blank">Linkedin</a></li>
+          <% admin_project.subjects.each do |subject| %>
+            <li><%= link_to subject.title, project_subject_path(admin_project.id, subject.id) %></li>
+          <% end %>
         </ul>
       </div>
     </div>
