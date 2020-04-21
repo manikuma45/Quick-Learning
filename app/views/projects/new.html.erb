@@ -1,7 +1,26 @@
-<div class="jumbotron jumbotron-extend animated rubberBand">
-</div>
-<div class="container">
-  <%= render 'form', project: @project %>
+<br />
+<br />
+<div class="container-fluid">
+  <div class="jumbotron jumbotron-extend animated rubberBand">
+  </div>
+  <%= form_with(model: @project, local: true) do |form| %>
+    <% if @project.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+        <ul>
+        <% @project.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.text_field :title, placeholder: "input project title", class: "form-control mb-3" %>
+      <%= form.submit nil, class: "btn btn-info btn-block btn-lg"  %>
+    </div>
+  <% end %>
 </div>
 
 <%= stylesheet_link_tag "projects/new", :media => "all" %>

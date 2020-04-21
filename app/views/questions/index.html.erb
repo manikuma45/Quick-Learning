@@ -1,27 +1,26 @@
-<h1>Questions</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @questions.each do |question| %>
-      <tr>
-        <td><%= question.title %></td>
-        <td><%= question.content %></td>
-        <td><%= link_to 'Show', project_question_path(@project, question) %></td>
-        <td><%= link_to 'Edit', edit_project_question_path(@project, question) %></td>
-        <td><%= link_to 'Destroy', project_question_path(@project, question), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Question', new_project_question_path %>
+<div class="main-wrap">
+  <div class="main">
+    <h3>Questions</h3>
+    <div class="form">
+      <%= link_to 'New Question', new_project_question_path, class: "btn btn-info btn-block" %>
+    </div>
+    <div class="main-table">
+      <table class="table table-hover">
+        <thead class="thead-light">
+          <tr>
+            <th>Title</th>
+            <th colspan="1"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @questions.each do |question| %>
+          <tr>
+            <td><%= link_to question.title, project_question_path(@project, question) %></td>
+            <td class="text-right"><%= link_to 'Edit', edit_project_question_path(@project, question), class: "btn btn-outline-info btn-sm" %><%= link_to 'Destroy', project_question_path(@project, question), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-info btn-sm" %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,19 +1,18 @@
-<p><h2>Part Title: <%= @part.title %></h2></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @part.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @part.content.html_safe %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @part.status %>
-</p>
-
-<%= link_to 'Edit', edit_project_subject_part_path(@part) %> |
-<%= link_to 'Back', project_subject_path(@subject) %>
+<div class="main-wrap">
+  <div class="main">
+    <h3>Part Show</h3>
+    <div class="main-table">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th><%= @part.title %></th>
+          </tr>
+          <tr>
+            <td><%= @part.content.html_safe %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <%= link_to 'Edit', edit_project_subject_part_path(@project, @subject, @part), class: 'btn btn-info btn-block btn-lg' %>
+  </div>
+</div>

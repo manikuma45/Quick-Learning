@@ -1,5 +1,8 @@
-<h1>Editing Subject</h1>
-
-<%= render partial:'form', locals: { subject: @subject, project: @project } %>
-
-<%= link_to 'Back', project_subjects_path %>
+<div class="main-wrap">
+  <div class="main">
+    <h3>Editing Subject</h3>
+    <div class="form">
+      <%= render partial:'form', locals: { subject: @subject, project: @project } %>
+    </div>
+  </div>
+</div>

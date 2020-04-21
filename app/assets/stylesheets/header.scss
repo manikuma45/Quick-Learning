@@ -1,11 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Varela+Round');
-body {
-    background: #fff;
-    padding: 0;
-    margin: 0;
-    color: #333333;
-    font-family: fontawesome;
-}
 .header {
     display: table;
     margin: 0 auto;
@@ -40,16 +33,18 @@ body {
   color: #fff;
   vertical-align: middle;
 }
-.header-nav {
-  margin-top: 60px;
-  margin-left: 20px;
-}
-.main {
-    margin: 0 auto;
-    display: block;
-    height: 100%;
-    margin-top: 60px;
-}
+// 以下多分不要
+// .header-nav {
+//   margin-top: 60px;
+//   margin-left: 20px;
+// }
+// 以下多分不要
+// .main {
+//     margin: 0 auto;
+//     display: block;
+//     height: 100%;
+//     margin-top: 60px;
+// }
 #sidebarMenu {
     z-index: 10;
     height: 100%;
@@ -169,12 +164,6 @@ li:hover{
   background: linear-gradient(90deg, #777777 0%, #AAAAAA	 110%);
   opacity: 0.98;
 }
-
-// .dropdwn>ul{
-//   position: fixed;
-//   transform: translateX(-250px);
-//   transition: transform 250ms ease-in-out;
-// }
 
 .dropdwn>li{
     width: 250px;

@@ -27,7 +27,7 @@ class ProjectsController < ApplicationController
         redirect_to project_launch_project_path(@project), notice: "プロジェクトを作成しました！カリキュラムの作成に取り掛かりましょう！"
       end
     else
-      render 'new', notice: "プロジェクトを作成できませんでした。"
+      render 'new', alert: "プロジェクトを作成できませんでした。"
     end
   end
 
@@ -37,15 +37,19 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update(project_params)
-      redirect_to projects_path, notice: "プロジェクト名を更新しました"
+      redirect_to projects_path, notice: "プロジェクト名を更新しました！"
     else
       render 'edit'
     end
   end
 
   def destroy
-    @project.destroy
-    redirect_to projects_path, notice: 'プロジェクトを削除しました'
+    unless @project == admin_project
+      @project.destroy
+      redirect_to projects_path, notice: 'プロジェクトを削除しました！'
+    else
+      redirect_to projects_path, alert: "active中のプロジェクトは削除できません！！"
+    end
   end
 
 # 生徒を招待、社員が社員を招待、アプリ管理者がクライアントを招待、クライアントがプロジェクトを作成した際、それ以外の場合分け

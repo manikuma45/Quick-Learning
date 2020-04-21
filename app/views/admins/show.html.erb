@@ -1,3 +1,15 @@
-<h1>Admins#show</h1>
-<p>名前 : <%= @admin.name %></p>
-<p>メールアドレス : <%= @admin.email %></p>
+<div class="main-wrap">
+  <div class="main">
+    <h3><%= @admin.name %></h3>
+    <div class="main-table">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th><%= Admin.human_attribute_name(:email) %></th>
+            <td><%= @admin.email %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
