@@ -26,17 +26,16 @@
 <% end %>
 
 <div id="summernote"></div>
-</div>
 
 <script>
-$(function () {
-  $('[data-provider="summernote"]').each(function(){
-    $(this).summernote({
-      lang: 'ja-JP',
-      height: 500,
-      fontNames: ['Helvetica', 'sans-serif', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New'],
-      fontNamesIgnoreCheck: ['Helvetica', 'sans-serif', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New'],
-    });
+  $(function () {
+    $('[data-provider="summernote"]').each(function(){
+      $(this).summernote({
+        lang: 'ja-JP',
+        height: 500,
+        fontNames: ['Helvetica', 'sans-serif', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New'],
+        fontNamesIgnoreCheck: ['Helvetica', 'sans-serif', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New'],
+      });
+    })
   })
-})
 </script>

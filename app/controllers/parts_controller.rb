@@ -19,7 +19,7 @@ class PartsController < ApplicationController
 
     respond_to do |format|
       if @part.save
-        format.html { redirect_to project_subject_path(id: @subject.id), notice: "投稿しました" }
+        format.html { redirect_to project_subject_path(id: @subject.id), notice: "投稿しました!" }
         format.json { render :show, status: :created, location: @part }
       else
         format.html { render :new }
@@ -37,7 +37,7 @@ class PartsController < ApplicationController
   def update
     respond_to do |format|
       if @part.update(part_params)
-        format.html { redirect_to project_subject_part_path(@part), notice: '投稿しました' }
+        format.html { redirect_to project_subject_part_path(@project, @subject, @part), notice: '更新しました！' }
         format.json { render :show, status: :ok, location: @part }
       else
         format.html { render :edit }
@@ -48,7 +48,7 @@ class PartsController < ApplicationController
 
   def destroy
     @part.destroy
-    redirect_to parts_path, notice: '削除しました'
+    redirect_to parts_path, alert: '削除しました！'
   end
 
   private
@@ -56,7 +56,7 @@ class PartsController < ApplicationController
   def set_part
     @project = Project.find(params[:project_id])
     @subject = Subject.find(params[:subject_id])
-    @part = @subject.parts.find(params[:id])
+    @part = Part.find(params[:id])
   end
 
   def part_params

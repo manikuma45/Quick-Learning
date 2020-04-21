@@ -12,8 +12,7 @@
 
       <% resource.class.invite_key_fields.each do |field| -%>
       <div class="form-group">
-        <%= f.label field %><br />
-        <%= f.text_field field, placeholder: "password", class: "form-control" %>
+        <%= f.text_field field, placeholder: "email", class: "form-control" %>
       </div>
       <% end -%>
 

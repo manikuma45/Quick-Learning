@@ -5,6 +5,10 @@ body {
     color: #333333;
     font-family: fontawesome;
 }
+// エラーメッセージとの空白を消す
+.wrap {
+  margin: 0;
+}
 .main-wrap {
   margin: 40px 15px;
   background-color: #F0F8FF;
@@ -23,7 +27,4 @@ table a {
 .main {
   height: 100%;
   padding: 20px 15px;
-}
-.wrap {
-  margin: 0;
 }
