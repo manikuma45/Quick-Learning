@@ -48,9 +48,15 @@
         <div class="spinner diagonal part-2"></div>
       </label>
       <div id="sidebarMenu">
-        <ul class="sidebarMenuInner">
+        <ul class="sidebarMenuInner dropdwn">
           <% admin_project.subjects.each do |subject| %>
-            <li><%= link_to subject.title, project_subject_path(admin_project.id, subject.id) %></li>
+            <li><%= subject.title %>
+              <ul class="dropdwn_menu">
+                <% subject.parts.each do |part| %>
+                  <li><%= link_to part.title, project_subject_part_path(admin_project.id, subject.id, part.id) %></li>
+                <% end %>
+              </ul>
+            </li>
           <% end %>
         </ul>
       </div>
@@ -75,3 +81,18 @@
     </div>
   </body>
 </html>
+
+<script>
+  $(function(){
+      $('.dropdwn li').hover(function(){
+          var window_y = $(window).scrollTop();
+          var scroll_y = $(".dropdwn").scrollTop();
+        	$(".dropdwn_menu").css({
+            "position": "absolute", "left": 0, "top": 0
+          });
+        $("ul:not(:animated)", this).slideDown();
+      }, function(){
+          $("ul.dropdwn_menu",this).slideUp();
+      });
+  });
+</script>

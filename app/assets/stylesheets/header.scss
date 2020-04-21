@@ -1,6 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Varela+Round');
-html, body {
-}
 body {
     background: #fff;
     padding: 0;
@@ -155,4 +153,45 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
     box-sizing: border-box;
     transform: rotate(-135deg);
     margin-top: -9px;
+}
+// ここからドロップダウンメニュー
+.dropdwn{
+    max-width: 250px;
+    overflow: scroll;
+    height: 100vh;
+}
+
+li{
+    cursor: pointer;
+}
+
+li:hover{
+  background: linear-gradient(90deg, #777777 0%, #AAAAAA	 110%);
+  opacity: 0.98;
+}
+
+// .dropdwn>ul{
+//   position: fixed;
+//   transform: translateX(-250px);
+//   transition: transform 250ms ease-in-out;
+// }
+
+.dropdwn>li{
+    width: 250px;
+}
+
+.dropdwn_menu{
+    width: 100%;
+    display: none;
+    position: absolute;
+    margin-left: 250px;
+    padding: 0;
+    background: linear-gradient(180deg, #AAAAAA	 0%, #DDDDDD 100%);
+    opacity: 0.98;
+    overflow: scroll;
+    height: 100vh;
+}
+
+li a{
+  word-wrap: break-word;
 }
