@@ -16,12 +16,12 @@
 
   <body>
     <% if notice %>
-      <div class="alert alert-info alert-dismissible animated heartBeat" role="alert">
+      <div class="alert alert-info alert-dismissible animated flash" role="alert">
         <%= notice %>
       </div>
     <% end %>
     <% if alert %>
-      <div class="alert alert-danger alert-dismissible animated heartBeat" role="alert">
+      <div class="alert alert-danger alert-dismissible animated flash" role="alert">
         <%= alert %>
       </div>
     <% end %>
@@ -61,7 +61,7 @@
     <% end %>
     <% if admin_signed_in? && current_admin.project_admin_projects.present? %>
       <div class="navigation-title">
-        <h3><%= link_to current_admin.name, current_admin %>/<%= link_to 'Project', project_path(admin_project) %></h3>
+        <h3><%= link_to current_admin.name, current_admin %>/<%= link_to admin_project.title, project_path(admin_project) %></h3>
       </div>
       <div class="navigation mt-3">
         <div class="container-fluid">
@@ -69,7 +69,7 @@
             <div class="col"><%= link_to "Project Index", projects_path, class: "nav-link" %></div>
             <div class="col"><%= link_to "Subject Index", admin_project, class: "nav-link" %></div>
             <div class="col"><%= link_to "Settiong", current_admin, class: "nav-link" %></div>
-            <div class="col"><%= link_to "Question Index", projects_path, class: "nav-link" %></div>
+            <div class="col"><%= link_to "Question Index", project_questions_path(admin_project.id), class: "nav-link" %></div>
           </div>
         </div>
       </div>

@@ -20,12 +20,11 @@ Rails.application.routes.draw do
   resources :admins, only: [:show]
 # プロジェクトに関するルーティング
   resources :projects do
+    resources :questions
     get :introduction, on: :collection
     get :project_launch, on: :member
     resources :subjects do
-      resources :parts do
-        resources :questions
-      end
+      resources :parts
     end
   end
   resources :project_users, only: [:create, :destroy]

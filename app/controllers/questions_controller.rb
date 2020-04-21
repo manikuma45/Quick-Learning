@@ -1,19 +1,20 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:index, :new, :create, :show, :edit, :update, :destroy]
 
   def index
-    @questions=Question.all
+    @questions = @project.questions.all.order(created_at: :desc)
   end
 
   def new
-    @question=Question.new
+    @question = Question.new
   end
 
   def create
-    @question = Question.new(question_params)
+    @question = @project.questions.build(question_params)
 
     if @question.save
-      redirect_to questions_path, notice: "投稿しました"
+      redirect_to project_questions_path, notice: "投稿しました"
     else
       render 'new'
     end
@@ -27,7 +28,7 @@ class QuestionsController < ApplicationController
 
   def update
     if @question.update(question_params)
-      redirect_to questions_path, notice: "投稿しました"
+      redirect_to project_questions_path, notice: "投稿しました"
     else
       render 'edit'
     end
@@ -35,7 +36,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-    redirect_to questions_path, notice: '削除しました'
+    redirect_to project_questions_path, notice: '削除しました'
   end
 
   private
@@ -44,7 +45,11 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
   end
 
+  def set_project
+    @project = Project.find(params[:project_id])
+  end
+
   def question_params
-    params.require(:question).permit(:title, :content)
+    params.require(:question).permit(:title, :content, :project_id)
   end
 end

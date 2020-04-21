@@ -1,15 +1,7 @@
-<br>
-<br>
-<br>
-<br>
-<div class="jumbotron jumbotron-extend">
+<div class="jumbotron jumbotron-extend animated rubberBand">
 </div>
 <div class="container">
-<% if @project_admin.present? %>
-  <%= link_to 'プロジェクトから退出する', project_admin_path(id: @project_admin.id), methodNEXT>>elete, class: 'btn btn-info mr-auto' %>
-<% else %>
   <%= link_to 'カリキュラムの作成を始める', project_admins_path(project_id: @project.id), method: :post, class: 'btn btn-info btn-block btn-lg' %>
-<% end %>
 </div>
 
 <%= stylesheet_link_tag "projects/introduction", :media => "all" %>

@@ -11,12 +11,12 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     case resource
     when Admin
-      if current_admin.invited_by_id.present?
+      if admin_participation?
+        admin_project
+      elsif current_admin.invited_by_id.present?
         introduction_projects_path
-      elsif current_admin.project_admin_projects.present?
-        projects_path
       else
-        new_project_path(notice: "プロジェクトを作成しましょう！")
+        new_project_path
       end
     when User
       if current_user.project_user_projects.empty?

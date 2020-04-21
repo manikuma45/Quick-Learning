@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:edit, :update, :destroy, :show, :project_launch]
 
   def index
-    @projects = current_admin.projects
+    @projects = current_admin.projects.order(created_at: :desc)
     @project = Project.new
   end
 

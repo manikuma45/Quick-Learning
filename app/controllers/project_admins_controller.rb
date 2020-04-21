@@ -4,6 +4,7 @@ class ProjectAdminsController < ApplicationController
     if admin_participation?
       project_admin = current_admin.project_admins.first.destroy
       project_admin = current_admin.project_admins.create(project_id: params[:project_id])
+        redirect_back(fallback_location: root_path)
     elsif current_admin.invited_by_id.present?
       project_admin = current_admin.project_admins.create(project_id: params[:project_id])
       redirect_to Admin.find(current_admin.invited_by_id).project_admin_projects.last, notice: "プロジェクトに参加しました！"

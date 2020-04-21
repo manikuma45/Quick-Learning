@@ -7,7 +7,7 @@ class PartsController < ApplicationController
 
   def new
     @project = Project.find(params[:project_id])
-    @subject = @project.subjects.find(params[:subject_id])
+    @subject = Subject.find(params[:subject_id])
     @part=Part.new
   end
 

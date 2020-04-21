@@ -2,8 +2,7 @@ class SubjectsController < ApplicationController
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
 
   def index
-    @project = Project.find(params[:project_id])
-    @subjects = @project.subjects.all
+    @subject = Subject.all.order(created_at: :desc)
   end
 
   def new
