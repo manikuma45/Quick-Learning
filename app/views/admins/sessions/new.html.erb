@@ -2,7 +2,7 @@
 
 <div class="container">
   <div class="session-title animated bounceInDown delay-1s">
-    <h2 ">Sign in/Admin user</h2>
+    <h2 ">Admin sign in</h2>
   </div>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -24,8 +24,13 @@
   <% end %>
 
   <div class="session-link text-right animated lightSpeedIn slow">
+    <%= link_to 'User sign in', new_user_session_path %>
+  </div>
+
+  <div class="session-link text-right animated lightSpeedIn delay-1s">
     <%= link_to 'Sign up', new_admin_registration_path %>
   </div>
+
 
   <div class="shared-link text-right animated lightSpeedIn slower delay-1s">
     <%= render "admins/shared/links" %>
