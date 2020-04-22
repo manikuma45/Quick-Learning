@@ -1,3 +1,6 @@
+<% if user_signed_in? %>
+  <%= stylesheet_link_tag "user", :media => "all" %>
+<% end %>
 <div class="main-wrap">
   <div class="main">
     <h3>Part Show</h3>
@@ -13,6 +16,10 @@
         </tbody>
       </table>
     </div>
-    <%= link_to 'Edit', edit_project_subject_part_path(@project, @subject, @part), class: 'btn btn-info btn-block btn-lg' %>
+    <% if admin_signed_in? %>
+      <%= link_to 'Edit', edit_project_subject_part_path(@project, @subject, @part), class: 'btn btn-info btn-block btn-lg' %>
+    <% end %>
   </div>
 </div>
+<%= link_to "Question Index", project_subject_part_questions_path(@project, @subject, @part), class: "nav-link" %>
+<%= link_to 'New Question', new_project_subject_part_question_path(@project, @subject, @part, @question) %>

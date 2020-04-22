@@ -37,12 +37,13 @@
       <div class="header-brand">Quick Learning</div>
       <div class="header-icon">
         <% if user_signed_in? %>
-          <a class="icon fas fa-sign-out-alt faa-horizontal animated-hover fa-2x" href="/users/sign_out" data-method="delete" ></a>
+          <a class="icon far fa-question-circle faa-horizontal animated-hover fa-2x" href="/projects/<%= user_project.id %>/questions/new" data-toggle="tooltip" title="Post question"></a>
+          <a class="icon fas fa-sign-out-alt faa-horizontal animated-hover fa-2x" href="/users/sign_out" data-method="delete" data-toggle="tooltip" title="Log out"></a>
         <% end %>
         <% if admin_signed_in? %>
-          <a class="icon fas fa-user-tie faa-horizontal animated-hover fa-2x" href="/admins/invitation/new" ></a>
-          <a class="icon fas fa-user-graduate faa-horizontal animated-hover fa-2x" href="/users/invitation/new" ></a>
-          <a class="icon fas fa-sign-out-alt faa-horizontal animated-hover fa-2x" href="/admins/sign_out" data-method="delete" ></a>
+          <a class="icon fas fa-user-tie faa-horizontal animated-hover fa-2x" href="/admins/invitation/new" data-toggle="tooltip" title="Invite admin"></a>
+          <a class="icon fas fa-user-graduate faa-horizontal animated-hover fa-2x" href="/users/invitation/new" data-toggle="tooltip" title="Invite user"></a>
+          <a class="icon fas fa-sign-out-alt faa-horizontal animated-hover fa-2x" href="/admins/sign_out" data-method="delete" data-toggle="tooltip" title="Log out"></a>
         <% end %>
       </div>
     <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
@@ -92,7 +93,6 @@
           <div class="row">
             <div class="col"><%= link_to "Project Index", projects_path, class: "nav-link" %></div>
             <div class="col"><%= link_to "Subject Index", admin_project, class: "nav-link" %></div>
-            <div class="col"><%= link_to "Question Index", project_questions_path(admin_project.id), class: "nav-link" %></div>
             <div class="col"><%= link_to "My Page", current_admin, class: "nav-link" %></div>
           </div>
         </div>
@@ -116,4 +116,7 @@
           $("ul.dropdwn_menu",this).slideUp();
       });
   });
+</script>
+<script>
+$('[data-toggle="tooltip"]').tooltip();
 </script>

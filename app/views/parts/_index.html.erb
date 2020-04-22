@@ -5,7 +5,7 @@
     </tr>
   </thead>
   <tbody>
-  <% parts.each do |part| %>
+  <% @parts.each do |part| %>
     <% if part.id.present? %>
       <tr>
         <td><%= link_to part.title, project_subject_part_path(@project, @subject, part) %></td>

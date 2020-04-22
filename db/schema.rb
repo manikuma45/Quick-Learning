@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_20_235515) do
+ActiveRecord::Schema.define(version: 2020_04_22_064028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,8 +77,10 @@ ActiveRecord::Schema.define(version: 2020_04_20_235515) do
     t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "project_id"
-    t.index ["project_id"], name: "index_questions_on_project_id"
+    t.bigint "user_id"
+    t.bigint "part_id"
+    t.index ["part_id"], name: "index_questions_on_part_id"
+    t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
   create_table "subjects", force: :cascade do |t|
@@ -116,6 +118,7 @@ ActiveRecord::Schema.define(version: 2020_04_20_235515) do
 
   add_foreign_key "parts", "subjects"
   add_foreign_key "projects", "admins"
-  add_foreign_key "questions", "projects"
+  add_foreign_key "questions", "parts"
+  add_foreign_key "questions", "users"
   add_foreign_key "subjects", "projects"
 end
