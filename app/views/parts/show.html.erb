@@ -6,6 +6,7 @@
     <h3 class="title">Part Show</h3>
     <% if user_signed_in? %>
     <a class="icon far fa-question-circle animated infinite fadeIn slower fa-2x" href="/projects/<%= @project.id %>/subjects/<%= @subject.id %>/parts/<%= @part.id %>/questions/new" data-toggle="tooltip" title="Post question"></a>
+    <h2><%= link_to @part.status, project_subject_part_toggle_status_path(@project, @subject, @part), method: :patch, class: 'btn btn-outline-info btn-sm' %></h2>
     <% end %>
     <div class="main-table">
       <table class="table">

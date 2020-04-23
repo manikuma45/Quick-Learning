@@ -1,5 +1,5 @@
 class PartsController < ApplicationController
-  before_action :set_part, only: [:show, :edit, :update, :destroy]
+  before_action :set_part, only: [:show, :edit, :update, :destroy, :toggle_status]
 
   def index
     @parts = Part.all.order(created_at: :desc)
@@ -51,12 +51,17 @@ class PartsController < ApplicationController
     redirect_to parts_path, alert: '削除しました！'
   end
 
+  def toggle_status
+    @part.toggle_status!
+    redirect_back(fallback_location: root_path)
+  end
+
   private
 
   def set_part
     @project = Project.find(params[:project_id])
     @subject = Subject.find(params[:subject_id])
-    @part = Part.find(params[:id])
+    @part = Part.find(params[:id] || params[:part_id])
   end
 
   def part_params

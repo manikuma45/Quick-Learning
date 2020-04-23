@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     get :project_launch, on: :member
     resources :subjects do
       resources :parts do
+        patch :toggle_status
         resources :questions, only: [:new, :show, :update, :create, :edit, :destroy]
       end
     end

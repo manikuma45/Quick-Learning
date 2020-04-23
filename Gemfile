@@ -66,6 +66,7 @@ gem 'devise'
 gem 'devise_invitable'
 # test
 gem 'pry-byebug'
+gem 'faker'
 # frontend
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'

@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2020_04_22_234800) do
   create_table "parts", force: :cascade do |t|
     t.string "title", null: false
     t.text "content", null: false
-    t.string "status", default: "unfinish", null: false
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "subject_id"
