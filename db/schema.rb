@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_22_064028) do
+ActiveRecord::Schema.define(version: 2020_04_22_234800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,7 +79,11 @@ ActiveRecord::Schema.define(version: 2020_04_22_064028) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.bigint "part_id"
+    t.bigint "project_id"
+    t.bigint "subject_id"
     t.index ["part_id"], name: "index_questions_on_part_id"
+    t.index ["project_id"], name: "index_questions_on_project_id"
+    t.index ["subject_id"], name: "index_questions_on_subject_id"
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
@@ -119,6 +123,8 @@ ActiveRecord::Schema.define(version: 2020_04_22_064028) do
   add_foreign_key "parts", "subjects"
   add_foreign_key "projects", "admins"
   add_foreign_key "questions", "parts"
+  add_foreign_key "questions", "projects"
+  add_foreign_key "questions", "subjects"
   add_foreign_key "questions", "users"
   add_foreign_key "subjects", "projects"
 end

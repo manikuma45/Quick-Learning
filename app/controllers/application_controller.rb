@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include ProjectAdminsHelper
+  include ProjectUsersHelper
   # CSRF対策
   protect_from_forgery with: :exception
   # flashメッセージの

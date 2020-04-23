@@ -1,0 +1,23 @@
+<h1>My Questions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @questions.each do |question| %>
+      <tr>
+        <td><%= question.title %></td>
+        <td><%= question.content %></td>
+        <td><%= link_to 'Show', project_subject_part_question_path(question.part_id, question.subject_id, question.project_id, question) %></td>
+        <td><%= link_to 'Edit', edit_project_subject_part_question_path(question.part_id, question.subject_id, question.project_id, question) %></td>
+        <td><%= link_to 'Destroy', project_subject_part_question_path(question.part_id, question.subject_id, question.project_id, question), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

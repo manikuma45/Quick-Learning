@@ -13,8 +13,10 @@ class QuestionsController < ApplicationController
   def create
     @question = @part.questions.build(question_params)
     @question.user_id = current_user.id
+    @question.project_id = user_project.id
+    @question.subject_id = @part.subject_id
     if @question.save
-      redirect_to current_user, notice: "投稿しました"
+      redirect_to project_subject_part_path(@project, @subject, @part), notice: "投稿しました"
     else
       render 'new'
     end
@@ -37,6 +39,10 @@ class QuestionsController < ApplicationController
   def destroy
     @question.destroy
     redirect_to project_subject_part_questions_path, notice: '削除しました'
+  end
+
+  def user_question
+    @questions = Question.joins({:part => {:subject => :project}})
   end
 
   private

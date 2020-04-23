@@ -28,6 +28,9 @@ Rails.application.routes.draw do
       end
     end
   end
+  resources :questions, only: [:user_question] do
+    get :user_question, on: :collection
+  end
   resources :project_users, only: [:create, :destroy]
   resources :project_admins, only: [:create, :destroy]
 end

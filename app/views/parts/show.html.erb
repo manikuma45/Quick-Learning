@@ -3,7 +3,10 @@
 <% end %>
 <div class="main-wrap">
   <div class="main">
-    <h3>Part Show</h3>
+    <h3 class="title">Part Show</h3>
+    <% if user_signed_in? %>
+    <a class="icon far fa-question-circle animated infinite fadeIn slower fa-2x" href="/projects/<%= @project.id %>/subjects/<%= @subject.id %>/parts/<%= @part.id %>/questions/new" data-toggle="tooltip" title="Post question"></a>
+    <% end %>
     <div class="main-table">
       <table class="table">
         <tbody>

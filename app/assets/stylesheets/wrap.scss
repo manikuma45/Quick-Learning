@@ -12,6 +12,12 @@ body {
 .main-wrap {
   margin: 40px 15px;
   background-color: #F0F8FF;
+  border: 1px solid #DDDDDD	;
+  border-radius: 5px;
+}
+.main {
+  height: 100%;
+  padding: 20px 15px;
 }
 .form {
   margin: 30px 0 10px 0;
@@ -24,7 +30,14 @@ table a {
   font-size: 1.5rem;
   padding: 20px 0;
 }
+.main .title {
+  display: inline-block;
+}
 .main {
-  height: 100%;
-  padding: 20px 15px;
+  .icon {
+    float: right;
+  }
+  .icon::before {
+    color: #777777;
+  }
 }

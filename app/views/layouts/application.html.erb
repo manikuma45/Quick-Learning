@@ -37,7 +37,8 @@
       <div class="header-brand">Quick Learning</div>
       <div class="header-icon">
         <% if user_signed_in? %>
-          <a class="icon far fa-question-circle faa-horizontal animated-hover fa-2x" href="/projects/<%= user_project.id %>/questions/new" data-toggle="tooltip" title="Post question"></a>
+          <a class="icon fas fa-user-circle faa-horizontal animated-hover fa-2x" href="/users/<%= current_user.id %>" data-toggle="tooltip" title="Profile"></a>
+          <a class="icon far fa-question-circle faa-horizontal animated-hover fa-2x" href="/questions/user_question" data-toggle="tooltip" title="My questions"></a>
           <a class="icon fas fa-sign-out-alt faa-horizontal animated-hover fa-2x" href="/users/sign_out" data-method="delete" data-toggle="tooltip" title="Log out"></a>
         <% end %>
         <% if admin_signed_in? %>
