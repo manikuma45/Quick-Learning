@@ -69,3 +69,5 @@ gem 'pry-byebug'
 # frontend
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
+# sort
+gem 'ransack'

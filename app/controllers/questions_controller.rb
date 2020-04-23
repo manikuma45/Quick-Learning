@@ -3,7 +3,14 @@ class QuestionsController < ApplicationController
   before_action :set_part, only: [:create, :new, :show, :edit, :update, :destroy]
 
   def index
-    @questions = Question.all.order(created_at: :desc)
+    if admin_signed_in?
+      @search = Question.where(project_id: admin_project.id).ransack(params[:q])
+      @questions = @search.result
+    end
+    if user_signed_in?
+      @search = Question.where(project_id: user_project.id).ransack(params[:q])
+      @questions = @search.result
+    end
   end
 
   def new
