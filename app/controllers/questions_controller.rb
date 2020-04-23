@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
-  before_action :set_part, only: [:create, :new, :index, :show, :edit, :update, :destroy]
+  before_action :set_part, only: [:create, :new, :show, :edit, :update, :destroy]
 
   def index
     @questions = Question.all.order(created_at: :desc)
@@ -30,7 +30,7 @@ class QuestionsController < ApplicationController
 
   def update
     if @question.update(question_params)
-      redirect_to project_subject_part_questions_path, notice: "投稿しました"
+      redirect_to user_question_questions_path, notice: "投稿しました"
     else
       render 'edit'
     end
@@ -38,7 +38,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-    redirect_to project_subject_part_questions_path, notice: '削除しました'
+    redirect_back(fallback_location: root_path)
   end
 
   def user_question

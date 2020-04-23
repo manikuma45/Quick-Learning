@@ -1,27 +1,16 @@
-<h1>Questions</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @questions.each do |question| %>
-      <tr>
-        <td><%= question.title %></td>
-        <td><%= question.content %></td>
-        <td><%= link_to 'Show', project_subject_part_question_path(@project, @subject, @part, question) %></td>
-        <td><%= link_to 'Edit', edit_project_subject_part_question_path(@project, @subject, @part, question) %></td>
-        <td><%= link_to 'Destroy', project_subject_part_question_path(@project, @subject, @part, question), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Question', new_project_subject_part_question_path(@project, @subject, @part, @question) %>
+<div class="main-wrap">
+  <div class="main">
+    <h3>Question Index</h3>
+    <div class="main-table">
+      <table class="table">
+        <tbody>
+          <% @questions.each do |question| %>
+          <tr>
+            <td><%= link_to question.title, project_subject_part_question_path(question.project_id, question.subject_id, question.part_id, question) %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,9 +1,10 @@
+<% if user_signed_in? %>
+  <%= stylesheet_link_tag "user", :media => "all" %>
+<% end %>
 <div class="main-wrap">
   <div class="main">
-
-    <h1>Editing Question</h1>
-
+    <h3>Editing Question</h3>
+    <div class="form">
     <%= render partial:'form', locals: { question: @question, project: @project } %>
-
   </div>
 </div>

@@ -24,11 +24,11 @@ Rails.application.routes.draw do
     get :project_launch, on: :member
     resources :subjects do
       resources :parts do
-        resources :questions
+        resources :questions, only: [:new, :show, :update, :create, :edit, :destroy]
       end
     end
   end
-  resources :questions, only: [:user_question] do
+  resources :questions, only: [:user_question, :index] do
     get :user_question, on: :collection
   end
   resources :project_users, only: [:create, :destroy]
