@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
         new_project_path
       end
     when User
-      if current_user.project_user_projects.empty?
+      unless user_project.present?
         introduction_projects_path
       else
         current_user

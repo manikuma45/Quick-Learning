@@ -1,18 +1,6 @@
 <%= form_with(model: [project, subject], local: true) do |form| %>
-  <% if subject.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(subject.errors.count, "error") %> prohibited this subject from being saved:</h2>
-
-      <ul>
-      <% subject.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="form-group">
     <%= form.text_field :title, placeholder: "input title", class: "form-control" %>
-    <%= form.submit nil, class: "btn btn-outline-info btn-sm mt-2" %>
+    <%= form.submit nil, class: "btn btn-outline-info btn-sm" %>
   </div>
 <% end %>

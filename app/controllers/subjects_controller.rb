@@ -24,7 +24,7 @@ class SubjectsController < ApplicationController
     if @subject.save
       redirect_back(fallback_location: root_path)
     else
-      render 'new'
+      redirect_to @project, alert: "サブジェクトを作成できませんでした。"
     end
   end
 
@@ -32,6 +32,7 @@ class SubjectsController < ApplicationController
     if @subject.update(subject_params)
       redirect_to @project, notice: "投稿しました"
     else
+      flash[:alert] = "タイトルを入力してください。"
       render 'edit'
     end
   end

@@ -48,7 +48,7 @@ class PartsController < ApplicationController
 
   def destroy
     @part.destroy
-    redirect_to parts_path, alert: '削除しました！'
+    redirect_back(fallback_location: root_path)
   end
 
   def toggle_status

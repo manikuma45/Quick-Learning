@@ -1,25 +1,46 @@
 <% comments.each do |comment| %>
-<% if comment.admin.present? %>
-<div class="comment">
-  <div class="main-table">
-    <table class="table">
-      <tbody>
-        <% if comment.admin.present? %>
-        <tr>
-          <th>回答者：<%= comment.admin.name %></th>
-        </tr>
+  <% if comment.admin.present? %>
+    <div class="comment">
+      <div class="main-table">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th>回答者：<%= comment.admin.name %></th>
+            </tr>
+            <tr>
+              <th><%= comment.content %></th>
+            </tr>
+          </tbody>
+        </table>
+        <div class="comment-reply">
+          <% if comment.admin == current_admin %>
+            <%= link_to 'Edit', edit_project_subject_part_question_comment_path(@project, @subject, @part, @question, comment), class: 'btn btn-outline-info btn-sm' %>
+            <%= link_to 'Destroy', project_subject_part_question_comment_path(comment, @question, @part, @subject, @project), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-info btn-sm" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <% if comment.user.present? %>
+    <div class="user-comment">
+      <div class="main-table">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th>質問者：<%= comment.user.name %></th>
+            </tr>
+            <tr>
+              <th><%= comment.content %></th>
+            </tr>
+          </tbody>
+        </table>
+        <% if comment.user == current_user %>
+          <div class="comment-reply">
+            <%= link_to 'Edit', edit_project_subject_part_question_comment_path(@project, @subject, @part, @question, comment), class: 'btn btn-outline-info btn-sm' %>
+            <%= link_to 'Destroy', project_subject_part_question_comment_path(@project, @subject, @part, @question, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-info btn-sm" %>
+          </div>
         <% end %>
-        <% if comment.user.present? %>
-        <tr>
-          <th>質問者：<%= comment.user.name %></th>
-        </tr>
-        <% end %>
-        <tr>
-          <th><%= comment.content %></th>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-<% end %>
+      </div>
+    </div>
+  <% end %>
 <% end %>

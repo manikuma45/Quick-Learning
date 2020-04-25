@@ -1,5 +1,5 @@
 body {
-    background: #fff;
+    background: #F5F5F5;
     padding: 0;
     margin: 0;
     color: #333333;
@@ -24,14 +24,26 @@ body {
 }
 .form {
   margin: 30px 0 10px 0;
+  .btn {
+    margin-top: 5px;
+  }
 }
 table {
   overflow-y:scroll;
   background-color: #FFF;
+  td {
+    min-width: 100px;
+    .btn {
+      width: 70px;
+      margin-top: 5px;
+      margin-left: 5px;
+    }
+  }
 }
 table a {
   font-size: 1.5rem;
   padding: 20px 0;
+  word-break: break-all;
 }
 .main .title {
   display: inline-block;
@@ -45,15 +57,22 @@ table a {
   }
 }
 .comment {
-  border: 1px solid #DDDDDD	;
+  border: 1px solid #DDDDDD;
   border-radius: 5px;
   background-color: #E6E6FA;
   margin: 0 15px 15px 15px;
   padding: 0 15px;
 }
 .user-comment {
+  border: 1px solid #DDDDDD;
+  border-radius: 5px;
   background-color: #F0F8FF;
+  margin: 0 15px 15px 15px;
+  padding: 0 15px;
 }
 .comment-form {
   margin: 0 15px 30px 15px;
+}
+.comment-reply {
+  margin: 10px;
 }

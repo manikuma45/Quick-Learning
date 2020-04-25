@@ -27,7 +27,7 @@ class ProjectsController < ApplicationController
         redirect_to project_launch_project_path(@project), notice: "プロジェクトを作成しました！カリキュラムの作成に取り掛かりましょう！"
       end
     else
-      render 'new', alert: "プロジェクトを作成できませんでした。"
+      redirect_to projects_path, alert: "プロジェクトを作成できませんでした。"
     end
   end
 
@@ -58,8 +58,7 @@ class ProjectsController < ApplicationController
     if current_user.present?
       @project_user = current_user.project_users.find_by(project_id: Admin.find(current_user.invited_by_id).project_admin_projects.last.id)
       return
-    end
-    if current_admin.nil?
+    elsif current_admin.nil?
       redirect_to new_admin_session_path
     elsif current_admin.invited_by_id.nil?
       redirect_to projects_path

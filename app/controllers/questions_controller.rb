@@ -39,7 +39,7 @@ class QuestionsController < ApplicationController
 
   def update
     if @question.update(question_params)
-      redirect_to user_question_questions_path, notice: "投稿しました"
+      redirect_to controller: 'questions', action: 'show', id: @question.id, notice: '質問を編集しました！'
     else
       render 'edit'
     end
@@ -47,7 +47,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-    redirect_back(fallback_location: root_path)
+    redirect_to user_question_questions_path, notice: '質問を削除しました！'
   end
 
   def user_question
