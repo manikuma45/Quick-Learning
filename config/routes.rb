@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  # LetterOpenerWebの設定
-  # mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
-
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+# ユーザーに関するルーティング
   devise_scope :admin do
     root "projects#introduction"
   end
@@ -19,7 +18,7 @@ Rails.application.routes.draw do
   }
   resources :users, only: [:show]
   resources :admins, only: [:show]
-
+# プロジェクトに関するルーティング
   resources :projects do
     get :introduction, on: :collection
     get :project_launch, on: :member
