@@ -10,7 +10,7 @@ body {
   margin: 0;
 }
 .main-wrap {
-  margin: 40px 15px;
+  margin: 40px 15px 15px 15px;
   background-color: #F0F8FF;
   border: 1px solid #DDDDDD	;
   border-radius: 5px;
@@ -43,4 +43,17 @@ table a {
   .icon::before {
     color: #777777;
   }
+}
+.comment {
+  border: 1px solid #DDDDDD	;
+  border-radius: 5px;
+  background-color: #E6E6FA;
+  margin: 0 15px 15px 15px;
+  padding: 0 15px;
+}
+.user-comment {
+  background-color: #F0F8FF;
+}
+.comment-form {
+  margin: 0 15px 30px 15px;
 }

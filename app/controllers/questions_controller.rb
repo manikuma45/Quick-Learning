@@ -30,6 +30,8 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    @comments = @question.comments
+    @comment = @question.comments.build
   end
 
   def edit

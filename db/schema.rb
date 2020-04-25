@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_22_234800) do
+ActiveRecord::Schema.define(version: 2020_04_25_050525) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,18 @@ ActiveRecord::Schema.define(version: 2020_04_22_234800) do
     t.index ["invited_by_id"], name: "index_admins_on_invited_by_id"
     t.index ["invited_by_type", "invited_by_id"], name: "index_admins_on_invited_by_type_and_invited_by_id"
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.bigint "question_id"
+    t.text "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "admin_id"
+    t.index ["admin_id"], name: "index_comments_on_admin_id"
+    t.index ["question_id"], name: "index_comments_on_question_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "parts", force: :cascade do |t|
@@ -120,6 +132,9 @@ ActiveRecord::Schema.define(version: 2020_04_22_234800) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "admins"
+  add_foreign_key "comments", "questions"
+  add_foreign_key "comments", "users"
   add_foreign_key "parts", "subjects"
   add_foreign_key "projects", "admins"
   add_foreign_key "questions", "parts"

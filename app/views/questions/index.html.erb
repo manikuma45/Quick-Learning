@@ -16,13 +16,19 @@
       <table class="table">
         <thead>
           <tr>
-            <th><%= sort_link(@search, :title) %></th>
+            <th><%= sort_link(@search, :created_at) %></th>
           </tr>
         </thead>
         <tbody>
           <% @questions.each do |question| %>
-          <tr>
+          <tr class="bg-info">
             <td><%= link_to question.title, project_subject_part_question_path(question.project_id, question.subject_id, question.part_id, question) %></td>
+          </tr>
+          <tr>
+            <td>質問者：<%= question.user.name %></td>
+          </tr>
+          <tr>
+            <td>part：<%= question.part.title %></td>
           </tr>
           <tr>
             <td><%= question.content %></td>

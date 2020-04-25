@@ -25,7 +25,9 @@ Rails.application.routes.draw do
     resources :subjects do
       resources :parts do
         patch :toggle_status
-        resources :questions, only: [:new, :show, :update, :create, :edit, :destroy]
+        resources :questions, only: [:new, :show, :update, :create, :edit, :destroy] do
+          resources :comments
+        end
       end
     end
   end

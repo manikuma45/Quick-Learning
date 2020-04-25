@@ -1,0 +1,25 @@
+<% comments.each do |comment| %>
+<% if comment.admin.present? %>
+<div class="comment">
+  <div class="main-table">
+    <table class="table">
+      <tbody>
+        <% if comment.admin.present? %>
+        <tr>
+          <th>回答者：<%= comment.admin.name %></th>
+        </tr>
+        <% end %>
+        <% if comment.user.present? %>
+        <tr>
+          <th>質問者：<%= comment.user.name %></th>
+        </tr>
+        <% end %>
+        <tr>
+          <th><%= comment.content %></th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<% end %>
+<% end %>
