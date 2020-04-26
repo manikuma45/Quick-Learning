@@ -19,18 +19,13 @@
     </div>
 
     <div class="actions">
-      <%= f.submit "Sign in", class: 'btn btn-info btn-sm animated infinite fadeIn delay-3s' %>
+      <%= f.submit "Sign in", class: 'btn btn-info btn-sm' %>
     </div>
   <% end %>
 
   <div class="session-link text-right animated lightSpeedIn slow">
-    <%= link_to 'Admin sign in', new_admin_session_path %>
+    <%= link_to 'Administer here!', new_admin_session_path %>
   </div>
-
-  <div class="session-link text-right animated lightSpeedIn delay-1s">
-    <%= link_to 'Sign up', new_user_registration_path %>
-  </div>
-
 
   <div class="shared-link text-right animated lightSpeedIn slower delay-1s">
     <%= render "users/shared/links" %>

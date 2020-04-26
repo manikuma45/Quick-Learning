@@ -6,8 +6,7 @@ class ApplicationController < ActionController::Base
   # flashメッセージの
   add_flash_types :success, :info, :warning, :danger
   # ログイン済ユーザーのみにアクセスを許可する
-  # before_action :authenticate_admin!
-
+  before_action :login_required
   # ログイン後、遷移先を分岐
   def after_sign_in_path_for(resource)
     case resource
@@ -30,6 +29,12 @@ class ApplicationController < ActionController::Base
 
   # deviseコントローラーにストロングパラメータを追加する
   before_action :configure_permitted_parameters, if: :devise_controller?
+
+  private
+
+  def login_required
+    redirect_to new_user_session_path unless current_user || current_admin
+  end
 
   protected
 
