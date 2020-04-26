@@ -1,105 +1,52 @@
-# admin
-admin1 = Admin.create!({name: "admin1", email: "admin1@test.com", password: "password", password_confirmation: "password"})
-admin2 = Admin.create!({name: "admin2", email: "admin2@test.com", password: "password", password_confirmation: "password"})
-admin3 = Admin.create!({name: "admin3", email: "admin3@test.com", password: "password", password_confirmation: "password"})
-# user
-user1 = User.create({name: "user1", email: "user1@test.email", password: "password", password_confirmation: "password"})
-user2 = User.create({name: "user2", email: "user2@test.email", password: "password", password_confirmation: "password"})
-user3 = User.create({name: "user3", email: "user3@test.email", password: "password", password_confirmation: "password"})
-# project
-project1 = Project.create({title: "title1", admin_id: 1})
-project2 = Project.create({title: "title2", admin_id: 2})
-project3 = Project.create({title: "title2", admin_id: 3})
-# subject
-subject1 = Subject.create({title: "title1", project_id: 1})
-subject2 = Subject.create({title: "title2", project_id: 1})
-subject3 = Subject.create({title: "title3", project_id: 1})
-subject1 = Subject.create({title: "title1", project_id: 2})
-subject2 = Subject.create({title: "title2", project_id: 2})
-subject3 = Subject.create({title: "title3", project_id: 2})
-subject1 = Subject.create({title: "title1", project_id: 3})
-subject2 = Subject.create({title: "title2", project_id: 3})
-subject3 = Subject.create({title: "title3", project_id: 3})
-subject4 = Subject.create({title: "title4", project_id: 1})
-subject5 = Subject.create({title: "title5", project_id: 1})
-subject6 = Subject.create({title: "title6", project_id: 1})
-subject4 = Subject.create({title: "title4", project_id: 2})
-subject5 = Subject.create({title: "title5", project_id: 2})
-subject6 = Subject.create({title: "title6", project_id: 2})
-subject4 = Subject.create({title: "title4", project_id: 3})
-subject5 = Subject.create({title: "title5", project_id: 3})
-subject6 = Subject.create({title: "title6", project_id: 3})
-# subject1part
-part1 = Part.create({title: "title1", content: "content1", subject_id: 1, status: 0})
-part2 = Part.create({title: "title1", content: "content1", subject_id: 1, status: 0})
-part3 = Part.create({title: "title1", content: "content1", subject_id: 1, status: 0})
-part4 = Part.create({title: "title1", content: "content1", subject_id: 1, status: 0})
-part5 = Part.create({title: "title1", content: "content1", subject_id: 1, status: 0})
-part6 = Part.create({title: "title1", content: "content1", subject_id: 1, status: 0})
-part7 = Part.create({title: "title1", content: "content1", subject_id: 1, status: 0})
-part8 = Part.create({title: "title1", content: "content1", subject_id: 1, status: 0})
-part9 = Part.create({title: "title1", content: "content1", subject_id: 1, status: 0})
-part10 = Part.create({title: "title1", content: "content1", subject_id: 1, status: 0})
-# subject2part
-part1 = Part.create({title: "title1", content: "content1", subject_id: 2, status: 0})
-part2 = Part.create({title: "title1", content: "content1", subject_id: 2, status: 0})
-part3 = Part.create({title: "title1", content: "content1", subject_id: 2, status: 0})
-part4 = Part.create({title: "title1", content: "content1", subject_id: 2, status: 0})
-part5 = Part.create({title: "title1", content: "content1", subject_id: 2, status: 0})
-part6 = Part.create({title: "title1", content: "content1", subject_id: 2, status: 0})
-part7 = Part.create({title: "title1", content: "content1", subject_id: 2, status: 0})
-part8 = Part.create({title: "title1", content: "content1", subject_id: 2, status: 0})
-part9 = Part.create({title: "title1", content: "content1", subject_id: 2, status: 0})
-part10 = Part.create({title: "title1", content: "content1", subject_id: 2, status: 0})
-# subject3part
-part1 = Part.create({title: "title1", content: "content1", subject_id: 3, status: 0})
-part2 = Part.create({title: "title1", content: "content1", subject_id: 3, status: 0})
-part3 = Part.create({title: "title1", content: "content1", subject_id: 3, status: 0})
-part4 = Part.create({title: "title1", content: "content1", subject_id: 3, status: 0})
-part5 = Part.create({title: "title1", content: "content1", subject_id: 3, status: 0})
-part6 = Part.create({title: "title1", content: "content1", subject_id: 3, status: 0})
-part7 = Part.create({title: "title1", content: "content1", subject_id: 3, status: 0})
-part8 = Part.create({title: "title1", content: "content1", subject_id: 3, status: 0})
-part9 = Part.create({title: "title1", content: "content1", subject_id: 3, status: 0})
-part10 = Part.create({title: "title1", content: "content1", subject_id: 3, status: 0})
-# user3question
-question1 = Question.create({title: "title1", content: "content1", user_id: 3, part_id: 1, subject_id: 1, project_id: 1})
-question2 = Question.create({title: "title1", content: "content1", user_id: 3, part_id: 1, subject_id: 1, project_id: 1})
-question3 = Question.create({title: "title1", content: "content1", user_id: 3, part_id: 1, subject_id: 1, project_id: 1})
-question4 = Question.create({title: "title1", content: "content1", user_id: 3, part_id: 1, subject_id: 1, project_id: 1})
-question5 = Question.create({title: "title1", content: "content1", user_id: 3, part_id: 1, subject_id: 1, project_id: 1})
-question6 = Question.create({title: "title1", content: "content1", user_id: 3, part_id: 1, subject_id: 1, project_id: 1})
-question7 = Question.create({title: "title1", content: "content1", user_id: 3, part_id: 1, subject_id: 1, project_id: 1})
-question8 = Question.create({title: "title1", content: "content1", user_id: 3, part_id: 1, subject_id: 1, project_id: 1})
-question9 = Question.create({title: "title1", content: "content1", user_id: 3, part_id: 1, subject_id: 1, project_id: 1})
-question10 = Question.create({title: "title1", content: "content1", user_id: 3, part_id: 1, subject_id: 1, project_id: 1})
-# user2question
-question1 = Question.create({title: "title1", content: "content1", user_id: 2, part_id: 1, subject_id: 1, project_id: 1})
-question2 = Question.create({title: "title1", content: "content1", user_id: 2, part_id: 1, subject_id: 1, project_id: 1})
-question3 = Question.create({title: "title1", content: "content1", user_id: 2, part_id: 1, subject_id: 1, project_id: 1})
-question4 = Question.create({title: "title1", content: "content1", user_id: 2, part_id: 1, subject_id: 1, project_id: 1})
-question5 = Question.create({title: "title1", content: "content1", user_id: 2, part_id: 1, subject_id: 1, project_id: 1})
-question6 = Question.create({title: "title1", content: "content1", user_id: 2, part_id: 1, subject_id: 1, project_id: 1})
-question7 = Question.create({title: "title1", content: "content1", user_id: 2, part_id: 1, subject_id: 1, project_id: 1})
-question8 = Question.create({title: "title1", content: "content1", user_id: 2, part_id: 1, subject_id: 1, project_id: 1})
-question9 = Question.create({title: "title1", content: "content1", user_id: 2, part_id: 1, subject_id: 1, project_id: 1})
-question10 = Question.create({title: "title1", content: "content1", user_id: 2, part_id: 1, subject_id: 1, project_id: 1})
-# user1question
-question1 = Question.create({title: "title1", content: "content1", user_id: 1, part_id: 1, subject_id: 1, project_id: 1})
-question2 = Question.create({title: "title1", content: "content1", user_id: 1, part_id: 1, subject_id: 1, project_id: 1})
-question3 = Question.create({title: "title1", content: "content1", user_id: 1, part_id: 1, subject_id: 1, project_id: 1})
-question4 = Question.create({title: "title1", content: "content1", user_id: 1, part_id: 1, subject_id: 1, project_id: 1})
-question5 = Question.create({title: "title1", content: "content1", user_id: 1, part_id: 1, subject_id: 1, project_id: 1})
-question6 = Question.create({title: "title1", content: "content1", user_id: 1, part_id: 1, subject_id: 1, project_id: 1})
-question7 = Question.create({title: "title1", content: "content1", user_id: 1, part_id: 1, subject_id: 1, project_id: 1})
-question8 = Question.create({title: "title1", content: "content1", user_id: 1, part_id: 1, subject_id: 1, project_id: 1})
-question9 = Question.create({title: "title1", content: "content1", user_id: 1, part_id: 1, subject_id: 1, project_id: 1})
-question10 = Question.create({title: "title1", content: "content1", user_id: 1, part_id: 1, subject_id: 1, project_id: 1})
-# project_admin
-project_admin1 = ProjectAdmin.create({admin_id: 1, project_id: 1})
-project_admin1 = ProjectAdmin.create({admin_id: 2, project_id: 2})
-project_admin1 = ProjectAdmin.create({admin_id: 3, project_id: 3})
-# project_user
-project_user1 = ProjectUser.create({user_id: 1, project_id: 1})
-project_user1 = ProjectUser.create({user_id: 2, project_id: 2})
-project_user1 = ProjectUser.create({user_id: 3, project_id: 3})
+1.times do |n|
+  name = Faker::Name.name
+  email = "admin#{n}@example.com"
+  password = "password"
+  Admin.create!(name: name,
+               email: email,
+               password: password,
+               password_confirmation: password,
+               )
+end
+
+Admin.all.each do |admin|
+  admin.projects.create!(
+    title: 'Ruby on Rails',
+    admin_id: admin.id
+  )
+end
+ProjectAdmin.create!(admin_id: 1, project_id: 1)
+
+subjects = ["RailsのためのRuby入門","Railsアプリケーションをのぞいてみよう","タスク管理アプリケーションを作ろう","現実の複雑さに対応する","テストをはじめよう","Railsの全体像を理解する","機能を追加してみよう","RailsとJavaScript","複数人でRailsアプリケーションを開発する","Railsアプリケーションと長く付き合うために"]
+subject_num = subjects.size
+subject_num.times do |n|
+  title = subjects[n]
+  Project.all.each do |project|
+    project.subjects.create!(
+      title: title,
+      project_id: project.id
+    )
+  end
+end
+parts_1 = ["1-1 オブジェクトを理解しよう","1-2 自分でクラスを作ってみよう","1-3 Rubyプログラムの基礎知識","1-4 少し高度なテクニック","1-5 似たところのあるクラスを作りたいとき","1-6 プログラムの異常を検知しよう"]
+part_num = parts_1.size
+part_num.times do |n|
+  title = parts_1[n]
+  content = "サンプルなし"
+  Subject.find(1).parts.create!(
+      title: title,
+      content: content,
+      subject_id: 1
+  )
+end
+parts_2 = ["2-1 コマンド実行環境を準備しよう","2-2 rbenvをインストールしよう","2-3 Rubyのインストール","2-4 Railsのインストール","2-5 データベースのインストールとセットアップ","2-6 Railsに触れてみよう"]
+part_num = parts_2.size
+part_num.times do |n|
+  title = parts_2[n]
+  content = "サンプルなし"
+  Subject.find(2).parts.create!(
+      title: title,
+      content: content,
+      subject_id: 2
+  )
+end

@@ -2,19 +2,22 @@
   margin: 75px 20px 0;
   font-size: 0.8rem;
 }
+.navigation {
+  margin: 10px;
+}
+.navigation .row {
+  border: 1px solid #AAAAAA;
+  border-radius: 5px;
+}
 .navigation .row .col {
   border: 1px solid #AAAAAA;
   text-align: center;
   background-color: #D3D3D3;
   opacity: 0.6;
-  padding: 5px;
+  padding: 0;
   text-decoration: none;
 }
-.navigation a:not(.btn), a:link:not(.btn) {
-  color: #222222;
-  text-decoration: none;
-}
-.navigation a:visited:not(.btn) {
-  color: #444444;
-  text-decoration: none;
+.navigation a:hover{
+  background: linear-gradient(90deg, #777777 0%, #AAAAAA	 110%);
+  opacity: 0.98;
 }

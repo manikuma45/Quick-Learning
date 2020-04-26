@@ -1,4 +1,6 @@
 class Users::InvitationsController < Devise::InvitationsController
+  skip_before_action :login_required
+
   def new
     super
   end
