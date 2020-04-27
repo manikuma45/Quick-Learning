@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 # ユーザーに関するルーティング
   devise_scope :admin do
     root "projects#introduction"
+    post 'admins/guest_sign_in', to: 'admins/sessions#new_guest'
   end
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',

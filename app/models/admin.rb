@@ -9,4 +9,11 @@ class Admin < ApplicationRecord
   devise :invitable, :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, invite_for: 24.hours
   validates :name, presence: true
   validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+
+  def self.guest
+    find_or_create_by!(email: 'admin0@example.com') do |admin|
+      admin.name = "ゲスト"
+      admin.password = "password"
+    end
+  end
 end
