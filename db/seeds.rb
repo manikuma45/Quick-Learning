@@ -16,6 +16,7 @@ end
                email: email,
                password: password,
                password_confirmation: password,
+               invited_by_id: 1,
                )
 end
 Admin.all.each do |admin|
@@ -25,7 +26,6 @@ Admin.all.each do |admin|
   )
 end
 ProjectAdmin.create!(admin_id: 1, project_id: 1)
-ProjectUser.create!(user_id: 1, project_id: 1)
 
 subjects = ["RailsのためのRuby入門","Railsアプリケーションをのぞいてみよう","タスク管理アプリケーションを作ろう","現実の複雑さに対応する","テストをはじめよう","Railsの全体像を理解する","機能を追加してみよう","RailsとJavaScript","複数人でRailsアプリケーションを開発する","Railsアプリケーションと長く付き合うために"]
 subject_num = subjects.size

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_scope :admin do
     root "projects#introduction"
     post 'admins/guest_sign_in', to: 'admins/sessions#new_guest'
+    post 'users/guest_sign_in', to: 'users/sessions#new_guest'
   end
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',

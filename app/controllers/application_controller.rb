@@ -36,6 +36,11 @@ class ApplicationController < ActionController::Base
     redirect_to new_user_session_path unless current_user || current_admin
   end
 
+# 以下設定途中
+  # def admin_login_required
+  #   redirect_back(fallback_location: root_path) unless current_admin
+  # end
+
   protected
 
   def configure_permitted_parameters

@@ -20,6 +20,7 @@
 
     <div class="actions">
       <%= f.submit "Sign in", class: 'btn btn-info btn-sm animated fadeIn slower' %>
+      <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: 'btn btn-info btn-sm animated fadeIn slower' %>
     </div>
   <% end %>
 

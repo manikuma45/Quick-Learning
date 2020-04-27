@@ -12,7 +12,7 @@ class Admin < ApplicationRecord
 
   def self.guest
     find_or_create_by!(email: 'admin0@example.com') do |admin|
-      admin.name = "ゲスト"
+      admin.name = "ゲスト管理者"
       admin.password = "password"
     end
   end
