@@ -16,6 +16,7 @@ end
                email: email,
                password: password,
                password_confirmation: password,
+               invited_by_id: 1,
                )
 end
 Admin.all.each do |admin|
