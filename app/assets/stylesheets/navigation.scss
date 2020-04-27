@@ -12,12 +12,13 @@
 .navigation .row .col {
   border: 1px solid #AAAAAA;
   text-align: center;
-  background-color: #D3D3D3;
+  // background-color: #D3D3D3;
   opacity: 0.6;
   padding: 0;
   text-decoration: none;
 }
-.navigation a:hover{
-  background: linear-gradient(90deg, #777777 0%, #AAAAAA	 110%);
+.navigation a.active{
+  background: #555555;
+  color: #fff;
   opacity: 0.98;
 }

@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:edit, :update, :destroy, :show, :project_launch]
+  skip_before_action :admin_login_required, only: [:introduction]
 
   def index
     @projects = current_admin.projects.order(created_at: :desc)

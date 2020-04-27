@@ -105,7 +105,14 @@
     </div>
   </body>
 </html>
-
+<!-- hrefをidも含めて完全一致させる -->
+<script>
+  $(function(){
+      $("a").each(function(){
+          if(this.href == location.href) $(this).addClass("active");
+      });
+  });
+</script>
 <script>
   $(function(){
       $('.dropdwn li').hover(function(){

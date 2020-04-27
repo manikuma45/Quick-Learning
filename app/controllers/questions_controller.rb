@@ -1,6 +1,8 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
   before_action :set_part, only: [:create, :new, :show, :edit, :update, :destroy]
+  skip_before_action :admin_login_required
+
 
   def index
     if admin_signed_in?

@@ -2,6 +2,7 @@
 
 class Admins::RegistrationsController < Devise::RegistrationsController
   skip_before_action :login_required
+  skip_before_action :admin_login_required
 
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]

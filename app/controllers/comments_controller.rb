@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:edit, :update, :create, :destroy]
-
+  skip_before_action :admin_login_required
   def create
     @comment = @question.comments.build(comment_params)
     if user_signed_in?

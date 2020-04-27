@@ -1,4 +1,5 @@
 class ProjectAdminsController < ApplicationController
+  skip_before_action :admin_login_required
   # プロジェクト参加済、招待者、管理者で処理の分岐
   def create
     if admin_participation?

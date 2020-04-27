@@ -2,6 +2,7 @@
 
 class Admins::PasswordsController < Devise::PasswordsController
   skip_before_action :login_required
+  skip_before_action :admin_login_required
   # GET /resource/password/new
   # def new
   #   super

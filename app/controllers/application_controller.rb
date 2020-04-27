@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   add_flash_types :success, :info, :warning, :danger
   # ログイン済ユーザーのみにアクセスを許可する
   before_action :login_required
+  before_action :admin_login_required
   # ログイン後、遷移先を分岐
   def after_sign_in_path_for(resource)
     case resource
@@ -36,10 +37,9 @@ class ApplicationController < ActionController::Base
     redirect_to new_user_session_path unless current_user || current_admin
   end
 
-# 以下設定途中
-  # def admin_login_required
-  #   redirect_back(fallback_location: root_path) unless current_admin
-  # end
+  def admin_login_required
+    redirect_back(fallback_location: root_path) unless current_admin
+  end
 
   protected
 

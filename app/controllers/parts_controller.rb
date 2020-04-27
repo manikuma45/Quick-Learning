@@ -1,5 +1,6 @@
 class PartsController < ApplicationController
   before_action :set_part, only: [:show, :edit, :update, :destroy, :toggle_status]
+  skip_before_action :admin_login_required, only: [:show, :toggle_status]
 
   def index
     @parts = Part.all.order(created_at: :desc)
