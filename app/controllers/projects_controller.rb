@@ -60,7 +60,7 @@ class ProjectsController < ApplicationController
         @project_user = current_user.project_users.find_by(project_id: Admin.find(current_user.invited_by_id).project_admin_projects.last.id)
         return
       else
-        redirect_to user_project
+        redirect_to current_user
       end
     elsif current_admin.nil?
       redirect_to new_admin_session_path
