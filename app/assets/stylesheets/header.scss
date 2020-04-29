@@ -5,7 +5,7 @@
     width: 100%;
     max-width: 100%;
     box-shadow: none;
-    background-color: #555555;
+    background-color: #008080;
     opacity: 0.98;
     position: fixed;
     height: 60px!important;
@@ -18,20 +18,30 @@
   color: #fff;
   font-weight: bold;
   vertical-align: middle;
-  font-size: 1em;
+  font-size: 1.2em;
 }
-.icon::before {
-  display: inline-block;
-  margin-right: 0.5em;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #fff;
-}
-.header-icon {
+// .icon::before {
+//   display: inline-block;
+//   margin-right: 0.5em;
+//   -webkit-font-smoothing: antialiased;
+//   -moz-osx-font-smoothing: grayscale;
+//   color: #fff;
+// }
+.header-link {
   display:table-cell;
   text-align: right;
   color: #fff;
   vertical-align: middle;
+  font-size: 1em;
+}
+.header-link a {
+  color: #008080;
+  text-decoration: none;
+  margin-right: 10px;
+  border: 1px solid #DDDDDD	;
+  border-radius: 4px;
+  padding: 10px;
+  background-color: #F0F8FF;
 }
 #sidebarMenu {
     z-index: 10;
@@ -42,7 +52,7 @@
     margin-top: 60px;
     transform: translateX(-250px);
     transition: transform 250ms ease-in-out;
-    background: linear-gradient(180deg, #555555 0%, #DDDDDD 100%);
+    background: linear-gradient(180deg, #008080 0%, #00CCCC 100%);
 }
 .sidebarMenuInner{
     margin:0;
@@ -139,23 +149,22 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
     margin-top: -9px;
 }
 // ここからドロップダウンメニュー
-.dropdwn{
-    max-width: 250px;
-    overflow: scroll;
-    height: 100vh;
-}
-
-li{
-    cursor: pointer;
-}
-
 li:hover{
-  background: linear-gradient(90deg, #777777 0%, #AAAAAA	 110%);
+  background: #FFFFFF;
   opacity: 0.98;
+  color: #008080;
+}
+li a{
+  display: block;
+  padding: 20px;
+  margin: 0;
 }
 
-.dropdwn>li{
-    width: 250px;
+li a:hover{
+  color: #008080;
+}
+.dropdwn_menu li{
+  padding: 0;
 }
 
 .dropdwn_menu{
@@ -164,13 +173,8 @@ li:hover{
     position: absolute;
     margin-left: 250px;
     padding: 0;
-    background: linear-gradient(180deg, #AAAAAA	 0%, #DDDDDD 100%);
+    background: linear-gradient(180deg, #008080	 0%, #00CCCC 100%);
     opacity: 0.98;
     overflow: scroll;
     height: 100vh;
-}
-
-li a{
-  word-wrap: break-word;
-  display: block;
 }

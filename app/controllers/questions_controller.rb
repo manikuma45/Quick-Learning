@@ -7,11 +7,11 @@ class QuestionsController < ApplicationController
   def index
     if admin_signed_in?
       @search = Question.where(project_id: admin_project.id).ransack(params[:q])
-      @questions = @search.result
+      @questions = @search.result.order(created_at: :desc)
     end
     if user_signed_in?
       @search = Question.where(project_id: user_project.id).ransack(params[:q])
-      @questions = @search.result
+      @questions = @search.result.order(created_at: :desc)
     end
   end
 
@@ -41,7 +41,7 @@ class QuestionsController < ApplicationController
 
   def update
     if @question.update(question_params)
-      redirect_to controller: 'questions', action: 'show', id: @question.id, notice: '質問を編集しました！'
+      redirect_to user_question_questions_path, notice: '質問を編集しました！'
     else
       render 'edit'
     end
@@ -53,7 +53,7 @@ class QuestionsController < ApplicationController
   end
 
   def user_question
-    @questions = Question.joins({:part => {:subject => :project}})
+    @questions = Question.joins({:part => {:subject => :project}}).order(created_at: :desc)
   end
 
   private

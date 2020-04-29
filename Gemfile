@@ -79,6 +79,7 @@ gem 'faker'
 # frontend
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
+gem 'enum_help'
 # sort
 gem 'ransack'
 # deploy

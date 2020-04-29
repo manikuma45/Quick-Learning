@@ -1,6 +1,7 @@
 <% if user_signed_in? %>
 <%= stylesheet_link_tag "user", :media => "all" %>
 <% end %>
+<div class=container>
 <div class="main-wrap">
   <div class="main">
     <h3>Question Index</h3>
@@ -21,7 +22,7 @@
         </thead>
         <tbody>
           <% @questions.each do |question| %>
-          <tr class="bg-info">
+          <tr class="table-title-bg">
             <td><%= link_to question.title, project_subject_part_question_path(question.project_id, question.subject_id, question.part_id, question) %></td>
           </tr>
           <tr>
@@ -38,4 +39,5 @@
       </table>
     </div>
   </div>
+</div>
 </div>

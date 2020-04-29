@@ -34,8 +34,13 @@
     <div class="wrap">
     <% if admin_signed_in? && current_admin.project_admin_projects.present? || user_signed_in? && current_user.project_user_projects.present? %>
     <div class="header">
-      <div class="header-brand">Quick Learning</div>
-      <div class="header-icon">
+      <% if user_signed_in? %>
+        <div class="header-brand">Quick Learning/<%= current_user.name %></div>
+      <% end %>
+      <% if admin_signed_in? %>
+        <div class="header-brand">Quick Learning/<%= current_admin.name %></div>
+      <% end %>
+      <div class="header-link">
         <% if user_signed_in? %>
           <a class="icon fas fa-user-circle faa-horizontal animated-hover fa-2x" href="/users/<%= current_user.id %>" data-toggle="tooltip" title="Profile"></a>
           <a class="icon far fa-comment faa-horizontal animated-hover fa-2x" href="/questions/user_question" data-toggle="tooltip" title="My questions"></a>
@@ -43,9 +48,9 @@
           <a class="icon fas fa-sign-out-alt faa-horizontal animated-hover fa-2x" href="/users/sign_out" data-method="delete" data-toggle="tooltip" title="Log out"></a>
         <% end %>
         <% if admin_signed_in? %>
-          <a class="icon fas fa-user-tie faa-horizontal animated-hover fa-2x" href="/admins/invitation/new" data-toggle="tooltip" title="Invite admin"></a>
-          <a class="icon fas fa-user-graduate faa-horizontal animated-hover fa-2x" href="/users/invitation/new" data-toggle="tooltip" title="Invite user"></a>
-          <a class="icon fas fa-sign-out-alt faa-horizontal animated-hover fa-2x" href="/admins/sign_out" data-method="delete" data-toggle="tooltip" title="Log out"></a>
+          <%= link_to "社員を招待", new_admin_invitation_path %>
+          <%= link_to "生徒を招待", new_user_invitation_path %>
+          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
         <% end %>
       </div>
     <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
@@ -87,11 +92,8 @@
     </div>
     <% end %>
     <% if admin_signed_in? && current_admin.project_admin_projects.present? %>
-      <div class="navigation-title">
-        <h3><%= link_to current_admin.name, current_admin %>/<%= link_to admin_project.title, project_path(admin_project) %></h3>
-      </div>
-      <div class="navigation mt-3">
-        <div class="container-fluid">
+      <div class="navigation">
+        <div class="container">
           <div class="row">
             <div class="col"><%= link_to "Project Index", projects_path, class: "nav-link" %></div>
             <div class="col"><%= link_to "Subject Index", admin_project, class: "nav-link" %></div>

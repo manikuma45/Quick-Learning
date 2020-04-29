@@ -27,9 +27,9 @@
   border-color: #660066;
 }
 
-a:not(.btn), a:link:not(.btn) {
+.container a:not(.btn), a:link:not(.btn) {
   color: #111111;
 }
-a:visited:not(.btn) {
+.container a:visited:not(.btn) {
   color: #333333;
 }

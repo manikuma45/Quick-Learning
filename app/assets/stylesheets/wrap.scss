@@ -9,6 +9,9 @@ body {
 .wrap {
   margin: 0;
 }
+.container {
+  max-width: 960px;
+}
 .main-wrap {
   margin: 40px 15px 15px 15px;
   background-color: #F0F8FF;
@@ -21,6 +24,10 @@ body {
 .main {
   height: 100%;
   padding: 20px 15px;
+}
+.main .fa-font-awesome-flag{
+  float: right;
+  color: #F0F8FF;
 }
 .form {
   margin: 30px 0 10px 0;
@@ -42,19 +49,12 @@ table {
 }
 table a {
   font-size: 1.5rem;
-  padding: 20px 0;
   word-break: break-all;
+  display: block;
+  text-decoration: none;
 }
-.main .title {
-  display: inline-block;
-}
-.main {
-  .icon {
-    float: right;
-  }
-  .icon::before {
-    color: #777777;
-  }
+.table-title-bg {
+  background-color: #AFEEEE;
 }
 .comment {
   border: 1px solid #DDDDDD;
@@ -78,4 +78,8 @@ table a {
 }
 .welcome-simbol {
   margin-left: 20px;
+}
+.user-main-wrap {
+  width: 500px;
+  margin: auto;
 }

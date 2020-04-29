@@ -1,11 +1,14 @@
+<%= render partial: 'shared/bg_animation' %>
 <%= stylesheet_link_tag "admins/sessions/new", :media => "all" %>
 
-<div class="container">
-  <div class="session-title animated bounceInDown delay-1s">
-    <h2 ">User sign in</h2>
-  </div>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="container">
+  <div class="user-main-wrap">
+    <div class="session-title animated bounceInDown delay-1s">
+      <h2 ">User sign in</h2>
+    </div>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="form-group">
@@ -22,15 +25,14 @@
       <%= f.submit "Sign in", class: 'btn btn-info btn-sm animated fadeIn slower' %>
       <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: 'btn btn-info btn-sm animated fadeIn slower' %>
     </div>
-  <% end %>
+    <% end %>
 
-  <div class="session-link text-right animated lightSpeedIn slow">
-    <%= link_to 'Administer here!', new_admin_session_path %>
-  </div>
+    <div class="session-link text-right animated lightSpeedIn slow">
+      <%= link_to 'Administer here!', new_admin_session_path %>
+    </div>
 
-  <div class="shared-link text-right animated lightSpeedIn slower delay-1s">
-    <%= render "users/shared/links" %>
+    <div class="shared-link text-right animated lightSpeedIn slower delay-1s">
+      <%= render "users/shared/links" %>
+    </div>
   </div>
 </div>
-
-<%= render partial: 'shared/bg_animation' %>

@@ -1,9 +1,5 @@
-.navigation-title {
-  margin: 75px 20px 0;
-  font-size: 0.8rem;
-}
-.navigation {
-  margin: 10px;
+.navigation a {
+  color: #333333;
 }
 .navigation .row {
   border: 1px solid #AAAAAA;
@@ -21,4 +17,7 @@
   background: #555555;
   color: #fff;
   opacity: 0.98;
+}
+.navigation .container{
+  margin-top: 100px;
 }

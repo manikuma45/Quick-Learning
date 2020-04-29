@@ -111,6 +111,8 @@ GEM
       dotenv (= 2.7.5)
       railties (>= 3.2, < 6.1)
     ed25519 (1.2.4)
+    enum_help (0.0.17)
+      activesupport (>= 3.0.0)
     erubi (1.9.0)
     execjs (2.7.0)
     factory_bot (5.1.2)
@@ -318,6 +320,7 @@ DEPENDENCIES
   devise_invitable
   dotenv-rails
   ed25519
+  enum_help
   factory_bot_rails
   faker
   jbuilder (~> 2.5)

@@ -1,9 +1,11 @@
-<div class="main-wrap">
-  <div class="main">
-    <h3>Part Index</h3>
+<div class=container>
+  <div class="main-wrap">
+    <div class="main">
+      <h3>Part Index</h3>
       <%= link_to "new part", new_project_subject_part_path(@project, @subject, @part), class: "btn btn-outline-info btn-sm" %>
-    <div class="main-table">
-      <%= render partial: 'parts/index', locals: { parts: @parts } %>
+      <div class="main-table">
+        <%= render partial: 'parts/index', locals: { parts: @parts } %>
+      </div>
     </div>
   </div>
 </div>
