@@ -4,6 +4,7 @@
 html body {
 	height: 100vh;
 	overflow-x: hidden;
+	color: #008080;
 }
 .wrap {
 	display: flex;
@@ -11,5 +12,11 @@ html body {
 	justify-content: center;
 }
 a {
-  color: #777777;
+	color: #008080;
+}
+h1 {
+	font-size: 5rem;
+}
+.btn {
+	background-color: #008080;
 }
