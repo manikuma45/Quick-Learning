@@ -2,8 +2,8 @@ body {
     background: #F5F5F5;
     padding: 0;
     margin: 0;
-    color: #333333;
-    font-family: fontawesome;
+    color: #555555;
+    font-family: 'Lato', 'Noto Sans JP', 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
 }
 // エラーメッセージとの空白を消す
 .wrap {
@@ -18,16 +18,18 @@ body {
   border: 1px solid #DDDDDD	;
   border-radius: 5px;
 }
-.main-table {
-  margin-top: 30px;
-}
 .main {
   height: 100%;
   padding: 20px 15px;
 }
-.main .fa-font-awesome-flag{
-  float: right;
-  color: #F0F8FF;
+.form {
+  margin: 30px 0 10px 0;
+  .btn {
+    margin-top: 5px;
+  }
+}
+.main-table {
+  margin-top: 30px;
 }
 .form {
   margin: 30px 0 10px 0;
@@ -52,6 +54,12 @@ table a {
   word-break: break-all;
   display: block;
   text-decoration: none;
+  color: #777777;
+}
+table a:hover {
+  text-decoration: none;
+  color: #333333;
+  display: block;
 }
 .table-title-bg {
   background-color: #AFEEEE;

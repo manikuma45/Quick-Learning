@@ -13,6 +13,11 @@
   padding: 0;
   text-decoration: none;
 }
+.navigation a:hover{
+  background: #555555;
+  color: #fff;
+  opacity: 0.98;
+}
 .navigation a.active{
   background: #555555;
   color: #fff;

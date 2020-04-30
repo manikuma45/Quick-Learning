@@ -19,29 +19,26 @@
   font-weight: bold;
   vertical-align: middle;
   font-size: 1.2em;
+  padding-left: 40px;
 }
-// .icon::before {
-//   display: inline-block;
-//   margin-right: 0.5em;
-//   -webkit-font-smoothing: antialiased;
-//   -moz-osx-font-smoothing: grayscale;
-//   color: #fff;
-// }
 .header-link {
   display:table-cell;
   text-align: right;
   color: #fff;
   vertical-align: middle;
   font-size: 1em;
+  font-weight: bold;
 }
 .header-link a {
-  color: #008080;
+  color: #fff;
   text-decoration: none;
-  margin-right: 10px;
-  border: 1px solid #DDDDDD	;
-  border-radius: 4px;
   padding: 10px;
-  background-color: #F0F8FF;
+}
+.header-link a:hover {
+  color: #333333
+}
+.header-link a.active {
+  color: #333333
 }
 #sidebarMenu {
     z-index: 10;

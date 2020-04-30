@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.3.0/font-awesome-animation.min.css">
     <!-- Animate.cssの導入 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <!-- font-family -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Noto+Sans+JP:400,700" rel="stylesheet">
     <!-- Summernoteの導入 -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -35,17 +37,17 @@
     <% if admin_signed_in? && current_admin.project_admin_projects.present? || user_signed_in? && current_user.project_user_projects.present? %>
     <div class="header">
       <% if user_signed_in? %>
-        <div class="header-brand">Quick Learning/<%= current_user.name %></div>
+        <div class="header-brand">Quick Learning / <%= current_user.name %></div>
       <% end %>
       <% if admin_signed_in? %>
         <div class="header-brand">Quick Learning/<%= current_admin.name %></div>
       <% end %>
       <div class="header-link">
         <% if user_signed_in? %>
-          <a class="icon fas fa-user-circle faa-horizontal animated-hover fa-2x" href="/users/<%= current_user.id %>" data-toggle="tooltip" title="Profile"></a>
-          <a class="icon far fa-comment faa-horizontal animated-hover fa-2x" href="/questions/user_question" data-toggle="tooltip" title="My questions"></a>
-          <a class="icon far fa-comments faa-horizontal animated-hover fa-2x" href="/questions" data-toggle="tooltip" title="Project questions"></a>
-          <a class="icon fas fa-sign-out-alt faa-horizontal animated-hover fa-2x" href="/users/sign_out" data-method="delete" data-toggle="tooltip" title="Log out"></a>
+          <%= link_to "プロフィール", current_user %>
+          <%= link_to "自分の質問", user_question_questions_path %>
+          <%= link_to "みんなの質問", questions_path %>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
         <% end %>
         <% if admin_signed_in? %>
           <%= link_to "社員を招待", new_admin_invitation_path %>

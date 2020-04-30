@@ -9,7 +9,7 @@
   <div class="main">
     <h3 class="title"><%= @subject.title %></h3>
     <% if user_signed_in? %>
-    <h4 class="text-right"><%= link_to "質問する", new_project_subject_part_question_path(@project, @subject, @part), class: 'btn btn-outline-info btn-sm part-question' %></h4>
+    <h4 class="text-right"><%= link_to @part.status_i18n, project_subject_part_toggle_status_path(@project, @subject, @part), method: :patch, class: 'btn btn-outline-info btn-sm part-status mr-2' %><%= link_to "質問する", new_project_subject_part_question_path(@project, @subject, @part), class: 'btn btn-outline-info btn-sm part-question' %></h4>
     <% end %>
       <table class="table table-responsive">
         <thead class="thead-default">
@@ -21,12 +21,6 @@
           <tr>
             <td><%= @part.content.html_safe %></td>
           </tr>
-          <% if user_signed_in? %>
-          <tr>
-          <td><h4><%= link_to @part.status_i18n, project_subject_part_toggle_status_path(@project, @subject, @part), method: :patch, class: 'btn btn-outline-info btn-sm part-status mr-2' %></h4></td>
-        </tr>
-        <% end %>
-
         </tbody>
       </table>
     <% if admin_signed_in? %>
